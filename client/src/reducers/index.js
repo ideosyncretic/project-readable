@@ -20,7 +20,6 @@ const categoriesReducer = (state = {}, action) => {
 	switch (action.type) {
 		case GET_CATEGORIES:
 			const { categories } = action
-			console.log(categories)
 			let categoriesObj = {}
 			categories.map(category => {
 				return (categoriesObj[category.path] = category)
