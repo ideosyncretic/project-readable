@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { getPostsRequest } from '../actions'
 import Post from './Post'
+import Categories from './Categories'
 
 class Posts extends Component {
   constructor(props) {
@@ -22,8 +23,8 @@ class Posts extends Component {
 
   render() {
     const { posts, match } = this.props
-    console.log(match.params)
     const { sortBy } = this.state
+
     const compare = (a, b) => {
       if (sortBy === 'SORT_BY_POPULARITY') {
         return b.voteScore - a.voteScore
@@ -41,7 +42,10 @@ class Posts extends Component {
     const sortedPosts = [].concat(filteredPosts.sort(compare))
 
     return (
-      <div className="Posts">
+      <div>
+        <h2>Categories</h2>
+        <Categories />
+        <h2>Posts</h2>
         <button onClick={() => this.handleSort('SORT_BY_POPULARITY')}>
           Popular
         </button>
