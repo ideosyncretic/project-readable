@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Flex, Box } from 'grid-styled'
 import styled from 'styled-components'
+import { PRIMARY, TEXT_LIGHT } from '../styles/constants.js'
 
 const Header = () => {
   return (
@@ -14,9 +15,8 @@ const Header = () => {
 }
 
 const HeaderContainer = styled(Flex)`
-  background: #463cc4;
+  background: ${PRIMARY};
   box-sizing: border-box;
-  color: white;
   a {
     color: white;
     text-decoration: none;

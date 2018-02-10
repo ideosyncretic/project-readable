@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux'
 import { getPostsRequest } from '../actions'
 import Post from './Post'
 import Categories from './Categories'
+import Page from './Page'
 
 class Posts extends Component {
   constructor(props) {
@@ -43,18 +44,18 @@ class Posts extends Component {
 
     return (
       <div>
-        <h2>Categories</h2>
         <Categories />
-        <h2>Posts</h2>
-        <button onClick={() => this.handleSort('SORT_BY_POPULARITY')}>
-          Popular
-        </button>
-        <button onClick={() => this.handleSort('SORT_BY_LATEST')}>
-          Latest
-        </button>
-        {sortedPosts.map(post => {
-          return <Post post={post} />
-        })}
+        <Page>
+          <button onClick={() => this.handleSort('SORT_BY_POPULARITY')}>
+            Popular
+          </button>
+          <button onClick={() => this.handleSort('SORT_BY_LATEST')}>
+            Latest
+          </button>
+          {sortedPosts.map(post => {
+            return <Post post={post} />
+          })}
+        </Page>
       </div>
     )
   }
