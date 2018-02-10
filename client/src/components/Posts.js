@@ -5,13 +5,54 @@ import { getPostsRequest } from '../actions'
 import Post from './Post'
 
 class Posts extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      sortBy: 'SORT_BY_POPULARITY'
+    }
+  }
+
   componentDidMount() {
     this.props.getPostsRequest()
   }
 
+  handleSort = sortBy => {
+    this.setState({ sortBy })
+  }
+
   render() {
     const { posts, match } = this.props
-    return <PostList posts={posts} path={match.params.category} />
+    console.log(match.params)
+    const { sortBy } = this.state
+    const compare = (a, b) => {
+      if (sortBy === 'SORT_BY_POPULARITY') {
+        return b.voteScore - a.voteScore
+      }
+      if (sortBy === 'SORT_BY_LATEST') {
+        return b.timestamp - a.timestamp
+      }
+    }
+
+    const filteredPosts = match.params.category
+      ? posts.filter(post => {
+          return post.category === match.params.category
+        })
+      : posts
+    const sortedPosts = [].concat(filteredPosts.sort(compare))
+
+    return (
+      <div className="Posts">
+        <button onClick={() => this.handleSort('SORT_BY_POPULARITY')}>
+          Popular
+        </button>
+        <button onClick={() => this.handleSort('SORT_BY_LATEST')}>
+          Latest
+        </button>
+        {sortedPosts.map(post => {
+          return <Post post={post} />
+        })}
+      </div>
+    )
   }
 }
 
@@ -29,15 +70,3 @@ const mapStateToProps = ({ posts }) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Posts)
-
-const PostList = ({ posts, path }) => {
-  return (
-    <div className="Posts">
-      {path
-        ? posts
-            .filter(post => post.category === path)
-            .map(post => <Post key={post.id} post={post} />)
-        : posts.map(post => <Post key={post.id} post={post} />)}
-    </div>
-  )
-}
