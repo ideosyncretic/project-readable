@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
-import Categories from './Categories'
 import Posts from './Posts'
+import PostDetail from './PostDetail'
 
 const App = () => {
   return (
@@ -11,7 +11,8 @@ const App = () => {
       </header>
       <main>
         <Switch>
-          <Route path="/:category?" component={Posts} />
+          <Route exact path="/post/:id" component={PostDetail} />
+          <Route exact path="/:category?" component={Posts} />
         </Switch>
       </main>
     </div>

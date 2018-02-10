@@ -11,22 +11,35 @@ const PostCard = styled(Card)`
 `
 
 export const Post = ({ post }) => {
-  const { title, body, timestamp, author, category, voteScore, deleted } = post
-  return !deleted ? (
-    <PostCard>
-      <h3>{title}</h3>
-      <Flex>
-        <Box>{author}</Box>
-        <Box pl={2}>{<TimeAgo date={timestamp} />}</Box>
-        <Box pl={2}>{category}</Box>
-      </Flex>
+  const {
+    id,
+    title,
+    body,
+    timestamp,
+    author,
+    category,
+    voteScore,
+    deleted
+  } = post
+  return post ? (
+    !deleted ? (
+      <Link to={`/post/${id}`}>
+        <PostCard>
+          <h3>{title}</h3>
+          <Flex>
+            <Box>{author}</Box>
+            <Box pl={2}>{<TimeAgo date={timestamp} />}</Box>
+            <Box pl={2}>{category}</Box>
+          </Flex>
 
-      <p>{body}</p>
-      <p>{voteScore} votes</p>
-    </PostCard>
-  ) : (
-    <PostCard>Sorry, this post has been deleted.</PostCard>
-  )
+          <p>{body}</p>
+          <p>{voteScore} votes</p>
+        </PostCard>
+      </Link>
+    ) : (
+      <PostCard>Sorry, this post has been deleted.</PostCard>
+    )
+  ) : null
 }
 
 export default Post

@@ -9,7 +9,6 @@ import thunk from 'redux-thunk'
 import rootReducer from './reducers'
 import { Provider as RebassProvider } from 'rebass'
 import { injectGlobal } from 'styled-components'
-import Posts from './components/Posts'
 
 injectGlobal`
   * { box-sizing: border-box; }
