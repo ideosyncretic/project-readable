@@ -1,9 +1,9 @@
 const AUBERGINE = '#636BF6'
-const AUBERGINE_PALE = '#B0B1F9'
+// const AUBERGINE_PALE = '#B0B1F9'
 
 const MIDNIGHT_0 = '#0A182A'
 const MIDNIGHT_1 = '#142136'
-const MIDNIGHT_2 = '#22334E'
+// const MIDNIGHT_2 = '#22334E'
 const MIDNIGHT_3 = '#253955'
 const MIDNIGHT_4 = '#415470'
 

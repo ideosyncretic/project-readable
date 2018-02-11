@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Flex, Box } from 'grid-styled'
+import { Flex } from 'grid-styled'
 import styled from 'styled-components'
-import { PRIMARY, TEXT_LIGHT } from '../styles/constants.js'
+import { PRIMARY } from '../styles/constants.js'
 
 const Header = () => {
   return (

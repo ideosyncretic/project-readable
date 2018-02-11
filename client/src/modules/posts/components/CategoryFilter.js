@@ -5,7 +5,6 @@ import { Flex } from 'grid-styled'
 import {
   ACCENT,
   PRIMARY,
-  BACKGROUND_DARK,
   TEXT_LIGHT,
   TEXT_LIGHT_MUTED
 } from '../../../styles/constants.js'
