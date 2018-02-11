@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import Header from './components/Header.js'
 import Posts from './modules/posts/Posts.js'
-import PostDetail from './modules/posts/PostDetail.js'
+import PostDetail from './modules/post/PostDetail.js'
 
 const App = () => {
   return (

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { getPostRequest } from '../../actions/index.js'
-import PostCard from '../post/PostCard.js'
+import PostCard from '../../components/PostCard.js'
 import { Box } from 'rebass'
 
 class PostDetail extends Component {
