@@ -44,7 +44,6 @@ const getCategoriesSuccess = categories => ({
 // post
 
 export const getPostRequest = id => dispatch => {
-  console.log('HI')
   return api.get(`/posts/${id}`).then(res => dispatch(getPostSuccess(res.data)))
 }
 
