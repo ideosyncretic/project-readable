@@ -33,6 +33,7 @@ export const PostCard = ({ post }) => {
       <StyledPostCard>
         <Link to={`/post/${id}`}>
           <Box>
+            <Link to={`/post/edit/${id}`}>Edit</Link>
             <h2>{title}</h2>
             <Flex>
               <Box>{author}</Box>
