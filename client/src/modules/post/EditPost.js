@@ -1,13 +1,29 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
 import EditPostForm from './components/EditPostForm'
+import { getPostRequest } from '../../actions/index.js'
 
-const EditPost = props => {
-  return <EditPostForm handleSubmit={props.handleSubmit} />
+class EditPost extends Component {
+  componentDidMount() {
+    const id = this.props.match.params.id
+    this.props.getPostRequest(id)
+  }
+  render() {
+    return <EditPostForm handleSubmit={this.props.handleSubmit} />
+  }
 }
 
 const formOptions = {
-  form: 'editPost'
+  form: 'editPost',
+  enableReinitialize: true
 }
 
-export default reduxForm(formOptions)(EditPost)
+EditPost = reduxForm(formOptions)(EditPost)
+
+export default connect(
+  state => ({
+    initialValues: state.post
+  }),
+  { getPostRequest }
+)(EditPost)
