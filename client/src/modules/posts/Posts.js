@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux'
 import { getPostsRequest, getCategoriesRequest } from '../../actions/index.js'
 import PostCard from '../../components/PostCard.js'
 import CategoryFilter from './components/CategoryFilter.js'
+import SortToggle from './components/SortToggle.js'
 import styled from 'styled-components'
 import { Flex, Box } from 'rebass'
 import { BACKGROUND_DARK } from '../../styles/constants.js'
@@ -51,14 +52,7 @@ class Posts extends Component {
           <Box>
             <CategoryFilter categories={categories} />
           </Box>
-          <Box>
-            <button onClick={() => this.handleSort('SORT_BY_POPULARITY')}>
-              Popular
-            </button>
-            <button onClick={() => this.handleSort('SORT_BY_LATEST')}>
-              Latest
-            </button>
-          </Box>
+          <SortToggle handleSort={this.handleSort} />
         </PostFilter>
         <PostsList posts={sortedPosts} />
       </div>

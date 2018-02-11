@@ -32,15 +32,16 @@ export const PostCard = ({ post }) => {
     !deleted ? (
       <StyledPostCard>
         <Link to={`/post/${id}`}>
-          <h2>{title}</h2>
-          <Flex>
-            <Box>{author}</Box>
-            <Box pl={2}>{<TimeAgo date={timestamp} />}</Box>
-            <Box pl={2}>{category}</Box>
-          </Flex>
-
-          <p>{body}</p>
-          <p>{voteScore} votes</p>
+          <Box>
+            <h2>{title}</h2>
+            <Flex>
+              <Box>{author}</Box>
+              <Box pl={2}>{<TimeAgo date={timestamp} />}</Box>
+              <Box pl={2}>{category}</Box>
+            </Flex>
+            <p>{body}</p>
+            <p>{voteScore} votes</p>
+          </Box>
         </Link>
       </StyledPostCard>
     ) : (
