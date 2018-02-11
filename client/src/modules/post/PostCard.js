@@ -5,12 +5,19 @@ import { Card } from 'rebass'
 import TimeAgo from 'react-timeago'
 import { Flex, Box } from 'rebass'
 
-const PostCard = styled(Card)`
-  padding: 1em;
+const StyledPostCard = styled(Card)`
+  padding: 2rem;
+  margin-bottom: 1rem;
   text-align: left;
+  a {
+    text-decoration: none;
+    &:visited {
+      color: inherit;
+    }
+  }
 `
 
-export const Post = ({ post }) => {
+export const PostCard = ({ post }) => {
   const {
     id,
     title,
@@ -23,9 +30,9 @@ export const Post = ({ post }) => {
   } = post
   return post ? (
     !deleted ? (
-      <Link to={`/post/${id}`}>
-        <PostCard>
-          <h3>{title}</h3>
+      <StyledPostCard>
+        <Link to={`/post/${id}`}>
+          <h2>{title}</h2>
           <Flex>
             <Box>{author}</Box>
             <Box pl={2}>{<TimeAgo date={timestamp} />}</Box>
@@ -34,12 +41,12 @@ export const Post = ({ post }) => {
 
           <p>{body}</p>
           <p>{voteScore} votes</p>
-        </PostCard>
-      </Link>
+        </Link>
+      </StyledPostCard>
     ) : (
-      <PostCard>Sorry, this post has been deleted.</PostCard>
+      <StyledPostCard>Sorry, this post has been deleted.</StyledPostCard>
     )
   ) : null
 }
 
-export default Post
+export default PostCard

@@ -3,16 +3,17 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { compose, createStore, applyMiddleware } from 'redux'
 import { BrowserRouter as Router } from 'react-router-dom'
-import App from './components/App'
+import App from './App.js'
 import registerServiceWorker from './registerServiceWorker'
 import thunk from 'redux-thunk'
 import rootReducer from './reducers'
 import { Provider as RebassProvider } from 'rebass'
 import { injectGlobal } from 'styled-components'
+import { BACKGROUND_LIGHT } from './styles/constants.js'
 
 injectGlobal`
   * { box-sizing: border-box; }
-  body { margin: 0; }
+  body { margin: 0; background: ${BACKGROUND_LIGHT}}
 `
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose

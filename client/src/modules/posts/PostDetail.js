@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { getPostRequest } from '../actions'
-import Post from './Post'
+import { getPostRequest } from '../../actions/index.js'
+import PostCard from '../post/PostCard.js'
 
 class PostDetail extends Component {
   componentDidMount() {
@@ -11,7 +11,7 @@ class PostDetail extends Component {
   }
   render() {
     const { post } = this.props
-    return <Post post={post} />
+    return <PostCard post={post} />
   }
 }
 
