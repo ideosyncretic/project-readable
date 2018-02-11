@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux'
 import { GET_POSTS, GET_POST, GET_CATEGORIES } from '../actions/types'
+import { reducer as formReducer } from 'redux-form'
 
 const postsReducer = (state = {}, action) => {
   switch (action.type) {
@@ -43,7 +44,8 @@ const categoriesReducer = (state = {}, action) => {
 const rootReducer = combineReducers({
   posts: postsReducer,
   post: postReducer,
-  categories: categoriesReducer
+  categories: categoriesReducer,
+  form: formReducer
 })
 
 export default rootReducer
