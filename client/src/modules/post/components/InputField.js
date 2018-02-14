@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, Input, Label, Select, Textarea } from 'rebass'
 
-const InputField = ({ input, placeholder, label, type, options }) => {
+const InputField = ({ input, placeholder, label, type, options, disabled }) => {
   switch (type) {
     case 'textarea':
       return (
@@ -12,6 +12,7 @@ const InputField = ({ input, placeholder, label, type, options }) => {
             {...input}
             id={input.name}
             placeholder={placeholder}
+            disabled={disabled}
           />
         </Box>
       )
@@ -19,14 +20,19 @@ const InputField = ({ input, placeholder, label, type, options }) => {
       return (
         <Box pb={3}>
           <Label htmlFor={input.name}>{label}</Label>
-          <Input {...input} id={input.name} placeholder={placeholder} />
+          <Input
+            {...input}
+            id={input.name}
+            placeholder={placeholder}
+            disabled={disabled}
+          />
         </Box>
       )
     case 'select':
       return (
         <Box pb={3}>
           <Label htmlFor={input.name}>{label}</Label>
-          <Select pb={3}>
+          <Select pb={3} disabled={disabled}>
             {options.map(option => (
               <option key={option} value={option}>
                 {option}

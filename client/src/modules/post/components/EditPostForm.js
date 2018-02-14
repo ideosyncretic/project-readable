@@ -33,6 +33,7 @@ const EditPostForm = props => {
         placeholder="Write something interesting!"
         type="select"
         options={categories}
+        disabled
       />
       <ButtonOutline type="submit">Post</ButtonOutline>
     </Box>
