@@ -1,5 +1,10 @@
 import { combineReducers } from 'redux'
-import { GET_POSTS, GET_POST, GET_CATEGORIES } from '../actions/types'
+import {
+  GET_POSTS,
+  GET_POST,
+  GET_CATEGORIES,
+  EDIT_POST
+} from '../actions/types'
 import { reducer as formReducer } from 'redux-form'
 
 const postsReducer = (state = {}, action) => {
@@ -22,6 +27,9 @@ const postReducer = (state = {}, action) => {
     case GET_POST:
       const { post } = action
       return post
+    case EDIT_POST:
+      const { editedPost } = action
+      return editedPost
     default:
       return state
   }

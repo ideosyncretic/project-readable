@@ -1,4 +1,4 @@
-import { GET_POSTS, GET_CATEGORIES, GET_POST } from './types'
+import { GET_POSTS, GET_CATEGORIES, GET_POST, EDIT_POST } from './types'
 import axios from 'axios'
 
 const api = axios.create({
@@ -50,4 +50,18 @@ export const getPostRequest = id => dispatch => {
 const getPostSuccess = post => ({
   type: GET_POST,
   post
+})
+
+export const editPostRequest = params => dispatch => {
+  return api
+    .put(`/posts/${params.id}`, {
+      title: params.title,
+      body: params.body
+    })
+    .then(res => dispatch(editPostSuccess(res.data)))
+}
+
+const editPostSuccess = post => ({
+  type: EDIT_POST,
+  editedPost: post
 })

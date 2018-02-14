@@ -4,11 +4,11 @@ import InputField from './InputField'
 import { Box, ButtonOutline } from 'rebass'
 
 const EditPostForm = props => {
-  const { categories } = props
+  const { categories, onSubmit } = props
   return (
     <Box
       is="form"
-      onSubmit={props.handleSubmit(mockSubmit)}
+      onSubmit={props.handleSubmit(onSubmit)}
       w={[1, 3 / 4, 5 / 6]}
       p={4}
     >
@@ -41,5 +41,3 @@ const EditPostForm = props => {
 }
 
 export default EditPostForm
-
-const mockSubmit = params => console.log(params)
