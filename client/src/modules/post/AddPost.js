@@ -2,21 +2,15 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
 import EditPostForm from './components/EditPostForm'
-import {
-  getCategoriesRequest,
-  getPostRequest,
-  editPostRequest
-} from '../../actions/index.js'
+import { getCategoriesRequest, addPostRequest } from '../../actions/index.js'
 
-class EditPost extends Component {
+class AddPost extends Component {
   componentDidMount() {
-    const id = this.props.match.params.id
     this.props.getCategoriesRequest()
-    this.props.getPostRequest(id)
   }
 
   onSubmit = params => {
-    this.props.editPostRequest(params)
+    this.props.addPostRequest(params)
   }
 
   render() {
@@ -26,27 +20,24 @@ class EditPost extends Component {
         categories={categories}
         handleSubmit={this.props.handleSubmit}
         onSubmit={this.onSubmit}
-        isAdding={false}
+        isAdding={true}
       />
     )
   }
 }
 
 const formOptions = {
-  form: 'editPost',
-  enableReinitialize: true
+  form: 'addPost'
 }
 
-EditPost = reduxForm(formOptions)(EditPost)
+AddPost = reduxForm(formOptions)(AddPost)
 
 export default connect(
   state => ({
-    initialValues: state.post,
     categories: Object.keys(state.categories)
   }),
   {
     getCategoriesRequest,
-    getPostRequest,
-    editPostRequest
+    addPostRequest
   }
-)(EditPost)
+)(AddPost)

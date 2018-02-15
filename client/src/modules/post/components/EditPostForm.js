@@ -4,7 +4,7 @@ import InputField from './InputField'
 import { Box, ButtonOutline } from 'rebass'
 
 const EditPostForm = props => {
-  const { categories, onSubmit } = props
+  const { categories, onSubmit, isAdding } = props
   return (
     <Box
       is="form"
@@ -33,9 +33,19 @@ const EditPostForm = props => {
         placeholder="Write something interesting!"
         type="select"
         options={categories}
-        disabled
+        disabled={!isAdding}
       />
-      <ButtonOutline type="submit">Post</ButtonOutline>
+      <Field
+        name="author"
+        component={InputField}
+        label="Author"
+        placeholder="Your name"
+        type="text"
+        disabled={!isAdding}
+      />
+      <ButtonOutline type="submit">
+        {isAdding ? 'Create post' : 'Update post'}
+      </ButtonOutline>
     </Box>
   )
 }

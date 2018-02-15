@@ -3,6 +3,7 @@ import {
   GET_POSTS,
   GET_POST,
   GET_CATEGORIES,
+  ADD_POST,
   EDIT_POST
 } from '../actions/types'
 import { reducer as formReducer } from 'redux-form'
@@ -27,6 +28,9 @@ const postReducer = (state = {}, action) => {
     case GET_POST:
       const { post } = action
       return post
+    case ADD_POST:
+      const { newPost } = action
+      return newPost
     case EDIT_POST:
       const { editedPost } = action
       return editedPost

@@ -1,4 +1,11 @@
-import { GET_POSTS, GET_CATEGORIES, GET_POST, EDIT_POST } from './types'
+import {
+  GET_POSTS,
+  GET_CATEGORIES,
+  GET_POST,
+  ADD_POST,
+  EDIT_POST
+} from './types'
+import { generateID } from '../utils/uuidGenerator.js'
 import axios from 'axios'
 
 const api = axios.create({
@@ -52,6 +59,19 @@ const getPostSuccess = post => ({
   post
 })
 
+export const addPostRequest = params => dispatch => {
+  return api
+    .post(`/posts/`, {
+      id: generateID(),
+      title: params.title,
+      body: params.body,
+      author: params.author,
+      category: params.category,
+      timestamp: Date.now()
+    })
+    .then(res => dispatch(addPostSuccess(res.data)))
+}
+
 export const editPostRequest = params => dispatch => {
   return api
     .put(`/posts/${params.id}`, {
@@ -60,6 +80,11 @@ export const editPostRequest = params => dispatch => {
     })
     .then(res => dispatch(editPostSuccess(res.data)))
 }
+
+const addPostSuccess = post => ({
+  type: ADD_POST,
+  newPost: post
+})
 
 const editPostSuccess = post => ({
   type: EDIT_POST,
