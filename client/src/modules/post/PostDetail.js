@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getPostRequest, getCommentsRequest } from '../../actions/index.js'
-import PostDetailCard from '../../components/PostDetailCard.js'
+import PostDetailCard from './components/PostDetailCard.js'
 import CommentCard from '../comment/components/CommentCard.js'
 import { Box, Card } from 'rebass'
 

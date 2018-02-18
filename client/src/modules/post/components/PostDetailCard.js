@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { Card } from 'rebass'
 import { Box } from 'rebass'
-import PostContent from './PostContent.js'
+import PostContent from '../../../components/PostContent.js'
 
 const StyledPostDetailCard = styled(Card)`
   padding: 2rem;
