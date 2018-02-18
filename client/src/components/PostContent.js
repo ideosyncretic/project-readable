@@ -1,9 +1,8 @@
 import React from 'react'
 import TimeAgo from 'react-timeago'
 import { Flex, Box, Badge } from 'rebass'
-import styled from 'styled-components'
 import Votes from '../components/Votes'
-import { ACCENT } from '../styles/constants'
+import { ACCENT } from '../styles/colors'
 
 const PostContent = ({ post }) => {
   const {

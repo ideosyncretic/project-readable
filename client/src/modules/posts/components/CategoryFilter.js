@@ -4,10 +4,9 @@ import styled from 'styled-components'
 import { Flex } from 'grid-styled'
 import {
   ACCENT,
-  SECONDARY_ACCENT,
   TEXT_LIGHT,
   TEXT_DARK_MUTED
-} from '../../../styles/constants.js'
+} from '../../../styles/colors.js'
 
 const Categories = props => {
   const { categories } = props

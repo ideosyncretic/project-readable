@@ -6,11 +6,11 @@ import { Button } from 'rebass'
 import {
   BACKGROUND,
   ACCENT,
-  ACCENT_DARK,
   TEXT_LIGHT,
   TEXT_LIGHT_MUTED,
   SECONDARY_ACCENT
 } from '../styles/constants.js'
+} from '../styles/colors.js'
 
 const Header = () => {
   return (

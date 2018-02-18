@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
 import EditPostForm from './components/EditPostForm'
 import { getCategoriesRequest, addPostRequest } from '../../actions/index.js'
+import { Card } from 'rebass'
 
 class AddPost extends Component {
   componentDidMount() {
@@ -16,12 +17,14 @@ class AddPost extends Component {
   render() {
     const { categories } = this.props
     return (
-      <EditPostForm
-        categories={categories}
-        handleSubmit={this.props.handleSubmit}
-        onSubmit={this.onSubmit}
-        isAdding={true}
-      />
+      <Card>
+        <EditPostForm
+          categories={categories}
+          handleSubmit={this.props.handleSubmit}
+          onSubmit={this.onSubmit}
+          isAdding={true}
+        />
+      </Card>
     )
   }
 }

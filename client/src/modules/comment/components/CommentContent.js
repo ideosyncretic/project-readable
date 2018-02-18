@@ -1,6 +1,6 @@
 import React from 'react'
 import TimeAgo from 'react-timeago'
-import { Flex, Box, Badge } from 'rebass'
+import { Flex, Box } from 'rebass'
 
 const CommentContent = ({ comment }) => {
   const { author, timestamp, body, voteScore } = comment

@@ -8,6 +8,7 @@ import {
   editPostRequest,
   deletePostRequest
 } from '../../actions/index.js'
+import { Card } from 'rebass'
 
 class EditPost extends Component {
   componentDidMount() {
@@ -28,14 +29,16 @@ class EditPost extends Component {
     const { categories } = this.props
     const id = this.props.match.params.id
     return (
-      <EditPostForm
-        categories={categories}
-        handleSubmit={this.props.handleSubmit}
-        onSubmit={this.onSubmit}
-        onDelete={this.onDelete}
-        isAdding={false}
-        id={id}
-      />
+      <Card>
+        <EditPostForm
+          categories={categories}
+          handleSubmit={this.props.handleSubmit}
+          onSubmit={this.onSubmit}
+          onDelete={this.onDelete}
+          isAdding={false}
+          id={id}
+        />
+      </Card>
     )
   }
 }

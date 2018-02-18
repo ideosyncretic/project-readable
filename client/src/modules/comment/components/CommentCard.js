@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { Card } from 'rebass'
 import CommentContent from './CommentContent.js'
@@ -17,7 +16,7 @@ const StyledCommentCard = styled(Card)`
 `
 
 export const CommentCard = ({ comment }) => {
-  const { id, deleted } = comment
+  const { deleted } = comment
   return comment ? (
     !deleted ? (
       <StyledCommentCard>

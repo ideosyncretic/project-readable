@@ -7,7 +7,7 @@ import CategoryFilter from './components/CategoryFilter.js'
 import SortToggle from './components/SortToggle.js'
 import styled from 'styled-components'
 import { Flex, Box } from 'rebass'
-import { WHITE } from '../../styles/constants.js'
+import { WHITE } from '../../styles/colors.js'
 
 class Posts extends Component {
   constructor(props) {

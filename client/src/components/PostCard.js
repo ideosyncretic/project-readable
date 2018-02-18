@@ -1,14 +1,8 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
-import styled from 'styled-components'
 import { Card } from 'rebass'
 import PostContent from './PostContent.js'
-import {
-  ACCENT,
-  BACKGROUND_MEDIUM,
-  BACKGROUND_LIGHT,
-  TEXT_LIGHT_MUTED
-} from '../styles/constants'
+import { TEXT_LIGHT_MUTED } from '../styles/colors'
 
 export const PostCard = props => {
   const { post } = props

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { getPostRequest, getCommentsRequest } from '../../actions/index.js'
 import PostDetailCard from './components/PostDetailCard.js'
 import CommentCard from '../comment/components/CommentCard.js'
-import { Box, Card } from 'rebass'
+import { Box } from 'rebass'
 
 class PostDetail extends Component {
   componentDidMount() {
@@ -16,7 +16,9 @@ class PostDetail extends Component {
     return (
       <Box p={3}>
         <PostDetailCard post={post} />
-        {comments.map(comment => <CommentCard comment={comment} />)}
+        {comments.map(comment => (
+          <CommentCard key={comment.id} comment={comment} />
+        ))}
       </Box>
     )
   }
