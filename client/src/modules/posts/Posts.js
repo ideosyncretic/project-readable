@@ -13,7 +13,7 @@ class Posts extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      sortBy: 'SORT_BY_POPULARITY'
+      sortBy: 'SORT_BY_LATEST'
     }
   }
 

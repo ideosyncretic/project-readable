@@ -10,7 +10,7 @@ class AddPost extends Component {
   }
 
   onSubmit = params => {
-    this.props.addPostRequest(params)
+    this.props.addPostRequest(params).then(this.props.history.push('/'))
   }
 
   render() {
