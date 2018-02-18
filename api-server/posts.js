@@ -27,7 +27,7 @@ const defaultData = {
     category: 'space',
     voteScore: 3,
     deleted: false,
-    commentCount: 1
+    commentCount: 0
   },
   '0efefyjabvozdd253nd': {
     id: '0efefyjabvozdd253nd',
@@ -46,7 +46,7 @@ Some other information about me: * In my late 20's * Live in Texas * Married - $
     category: 'showerthoughts',
     voteScore: 7,
     deleted: false,
-    commentCount: 1
+    commentCount: 0
   },
   '6ni6ok3ym7mf1p33lnez': {
     id: '6ni6ok3ym7mf1p33lnez',
