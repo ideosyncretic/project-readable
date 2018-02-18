@@ -36,7 +36,7 @@ const defaultData = {
   },
   '1234tuq4ut84ut8v4t8wun89g': {
     id: '1234tuq4ut84ut8v4t8wun89g',
-    parentId: '1236ok3ym7mf1exrkjelp33lnez',
+    parentId: '6ni6ok3ym7mf1p33lnez',
     timestamp: 1468166874634,
     body: 'I actually want an answer here guys',
     author: 'HowHasNoOneNoticed',
@@ -46,7 +46,7 @@ const defaultData = {
   },
   '1tuq4ut84ut8v4t8wun89g': {
     id: '1tuq4ut84ut8v4t8wun89g',
-    parentId: '1236ok3ym7mf1exrkjelp33lnez',
+    parentId: '6ni6ok3ym7mf1p33lnez',
     timestamp: 1468166874234,
     body: 'Checkmate, ya cunt!',
     author: 'Manareth',
