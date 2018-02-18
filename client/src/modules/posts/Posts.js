@@ -7,7 +7,7 @@ import CategoryFilter from './components/CategoryFilter.js'
 import SortToggle from './components/SortToggle.js'
 import styled from 'styled-components'
 import { Flex, Box } from 'rebass'
-import { BACKGROUND_DARK } from '../../styles/constants.js'
+import { BACKGROUND_MEDIUM } from '../../styles/constants.js'
 
 class Posts extends Component {
   constructor(props) {
@@ -86,7 +86,7 @@ const mapStateToProps = ({ posts, categories }) => {
 }
 
 const PostFilter = styled(Flex)`
-  background: ${BACKGROUND_DARK};
+  background: ${BACKGROUND_MEDIUM};
 `
 
 export default connect(mapStateToProps, mapDispatchToProps)(Posts)

@@ -2,7 +2,8 @@ import React from 'react'
 import TimeAgo from 'react-timeago'
 import { Flex, Box, Badge } from 'rebass'
 import styled from 'styled-components'
-import { ACCENT } from '../styles/constants'
+import Votes from '../components/Votes'
+import { ACCENT, BACKGROUND } from '../styles/constants'
 
 const PostContent = ({ post }) => {
   const {
@@ -17,7 +18,9 @@ const PostContent = ({ post }) => {
   return (
     <Flex direction="column">
       <Box>
-        <Badge bg={ACCENT}>{category}</Badge>
+        <Badge bg={ACCENT} color={BACKGROUND}>
+          {category}
+        </Badge>
       </Box>
       <h2>{title}</h2>
       <Flex>
@@ -26,7 +29,7 @@ const PostContent = ({ post }) => {
       </Flex>
       <p>{body}</p>
       <Flex justify="space-between">
-        <Box>{voteScore} votes</Box>{' '}
+        <Votes voteScore={voteScore} />
         <Box>
           {commentCount > 1 || commentCount === 0
             ? `${commentCount} comments`

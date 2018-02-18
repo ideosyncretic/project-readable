@@ -4,18 +4,11 @@ import styled from 'styled-components'
 import { Card } from 'rebass'
 import { Box } from 'rebass'
 import PostContent from '../../../components/PostContent.js'
-
-const StyledPostDetailCard = styled(Card)`
-  padding: 2rem;
-  margin-bottom: 1rem;
-  text-align: left;
-  a {
-    text-decoration: none;
-    &:visited {
-      color: inherit;
-    }
-  }
-`
+import {
+  BACKGROUND_LIGHT,
+  BACKGROUND_MEDIUM,
+  TEXT_LIGHT_MUTED
+} from '../../../styles/constants'
 
 export const PostDetailCard = ({ post }) => {
   const { id, deleted } = post
@@ -37,4 +30,22 @@ export const PostDetailCard = ({ post }) => {
   ) : null
 }
 
+const StyledPostDetailCard = Card.extend`
+  background: ${BACKGROUND_MEDIUM};
+  color: ${TEXT_LIGHT_MUTED};
+  box-shadow: none;
+  padding: 2rem;
+  margin-bottom: 1rem;
+  text-align: left;
+  a {
+    text-decoration: none;
+    &:visited {
+      color: inherit;
+    }
+  }
+  &:hover {
+    cursor: pointer;
+    background: ${BACKGROUND_LIGHT};
+  }
+`
 export default PostDetailCard

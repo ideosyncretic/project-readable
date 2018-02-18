@@ -3,7 +3,12 @@ import { Link } from 'react-router-dom'
 import { Flex, Box } from 'grid-styled'
 import styled from 'styled-components'
 import { Button } from 'rebass'
-import { PRIMARY, ACCENT, ACCENT_DARK } from '../styles/constants.js'
+import {
+  BACKGROUND,
+  ACCENT,
+  ACCENT_DARK,
+  TEXT_LIGHT_MUTED
+} from '../styles/constants.js'
 
 const Header = () => {
   return (
@@ -21,10 +26,10 @@ const Header = () => {
 }
 
 const HeaderContainer = styled(Flex)`
-  background: ${PRIMARY};
+  background: ${BACKGROUND};
   box-sizing: border-box;
   a {
-    color: white;
+    color: ${TEXT_LIGHT_MUTED};
     text-decoration: none;
     &:hover {
       text-decoration: underline;
@@ -32,7 +37,7 @@ const HeaderContainer = styled(Flex)`
   }
   button {
     background: ${ACCENT};
-    color: ${PRIMARY};
+    color: ${BACKGROUND};
     :active {
       background: ${ACCENT_DARK};
     }

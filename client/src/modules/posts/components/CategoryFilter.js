@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { Flex } from 'grid-styled'
 import {
   ACCENT,
-  PRIMARY,
+  BACKGROUND,
   TEXT_LIGHT,
   TEXT_LIGHT_MUTED
 } from '../../../styles/constants.js'
@@ -41,7 +41,6 @@ const CategoriesPanel = styled(Flex)`
     overflow: auto;
     li {
       color: ${TEXT_LIGHT};
-      border-color: ${PRIMARY};
       text-decoration: none;
       text-align: center;
       float: left;
