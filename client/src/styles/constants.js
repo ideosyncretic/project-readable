@@ -1,5 +1,6 @@
 // const AUBERGINE = '#636BF6'
 const MINT = '#57BA9F'
+const MINT_DARK = '#529986'
 // const AUBERGINE_PALE = '#B0B1F9'
 
 const MIDNIGHT_0 = '#0A182A'
@@ -19,6 +20,7 @@ export const BACKGROUND_MEDIUM = MIDNIGHT_3
 export const BACKGROUND_LIGHT = MIDNIGHT_4
 
 export const ACCENT = MINT
+export const ACCENT_DARK = MINT_DARK
 
 // TEXT
 export const TEXT_LIGHT = WHITE
