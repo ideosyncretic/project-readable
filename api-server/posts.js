@@ -27,7 +27,7 @@ const defaultData = {
     category: 'space',
     voteScore: 3,
     deleted: false,
-    commentCount: 0
+    commentCount: 1
   },
   '0efefyjabvozdd253nd': {
     id: '0efefyjabvozdd253nd',
@@ -57,9 +57,9 @@ Some other information about me: * In my late 20's * Live in Texas * Married - $
       "Check = king is threatened but can escape. Checkmate = king is currently threatened and no move can be made to escape, or no move can be made such that the king will not be immediately be threatened (if the king moves, it'll be into the path of another piece, or if you move any other piece, it'll immediately open up a path for the enemy)",
     author: 'HowHasNoOneNoticed',
     category: 'showerthoughts',
-    voteScore: -2,
+    voteScore: 30,
     deleted: false,
-    commentCount: 0
+    commentCount: 2
   },
   '1236ok3ym7mf1exrkjelp33lnez': {
     id: '1236ok3ym7mf1exrkjelp33lnez',
@@ -72,7 +72,7 @@ Some other information about me: * In my late 20's * Live in Texas * Married - $
     category: 'TIL',
     voteScore: 4,
     deleted: false,
-    commentCount: 0
+    commentCount: 2
   }
 }
 
