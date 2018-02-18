@@ -7,7 +7,9 @@ import {
   BACKGROUND,
   ACCENT,
   ACCENT_DARK,
-  TEXT_LIGHT_MUTED
+  TEXT_LIGHT,
+  TEXT_LIGHT_MUTED,
+  SECONDARY_ACCENT
 } from '../styles/constants.js'
 
 const Header = () => {
@@ -26,20 +28,20 @@ const Header = () => {
 }
 
 const HeaderContainer = styled(Flex)`
-  background: ${BACKGROUND};
+  background: linear-gradient(to bottom right, ${ACCENT}, ${SECONDARY_ACCENT});
   box-sizing: border-box;
   a {
-    color: ${TEXT_LIGHT_MUTED};
+    color: ${TEXT_LIGHT};
     text-decoration: none;
     &:hover {
       text-decoration: underline;
     }
   }
   button {
-    background: ${ACCENT};
+    background: ${TEXT_LIGHT};
     color: ${BACKGROUND};
     :active {
-      background: ${ACCENT_DARK};
+      background: ${TEXT_LIGHT_MUTED};
     }
   }
 `

@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { Card } from 'rebass'
 import PostContent from './PostContent.js'
 import {
-  PRIMARY,
+  ACCENT,
   BACKGROUND_MEDIUM,
   BACKGROUND_LIGHT,
   TEXT_LIGHT_MUTED
@@ -30,8 +30,6 @@ export const PostCard = props => {
 }
 
 const StyledPostCard = Card.extend`
-  background: ${BACKGROUND_MEDIUM};
-  color: ${TEXT_LIGHT_MUTED};
   box-shadow: none;
   padding: 2rem;
   margin-bottom: 1rem;
@@ -44,7 +42,7 @@ const StyledPostCard = Card.extend`
   }
   &:hover {
     cursor: pointer;
-    background: ${BACKGROUND_LIGHT};
+    box-shadow: 0 0 5px 2px ${TEXT_LIGHT_MUTED};
   }
 `
 

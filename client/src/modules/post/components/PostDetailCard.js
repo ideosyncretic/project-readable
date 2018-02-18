@@ -15,12 +15,10 @@ export const PostDetailCard = ({ post }) => {
   return post ? (
     !deleted ? (
       <StyledPostDetailCard>
-        <Link to={`/post/${id}`}>
-          <Box>
-            <Link to={`/post/edit/${id}`}>Edit</Link>
-          </Box>
-          <PostContent post={post} />
-        </Link>
+        <Box>
+          <Link to={`/post/edit/${id}`}>Edit</Link>
+        </Box>
+        <PostContent post={post} />
       </StyledPostDetailCard>
     ) : (
       <StyledPostDetailCard>
@@ -31,21 +29,9 @@ export const PostDetailCard = ({ post }) => {
 }
 
 const StyledPostDetailCard = Card.extend`
-  background: ${BACKGROUND_MEDIUM};
-  color: ${TEXT_LIGHT_MUTED};
   box-shadow: none;
   padding: 2rem;
   margin-bottom: 1rem;
   text-align: left;
-  a {
-    text-decoration: none;
-    &:visited {
-      color: inherit;
-    }
-  }
-  &:hover {
-    cursor: pointer;
-    background: ${BACKGROUND_LIGHT};
-  }
 `
 export default PostDetailCard

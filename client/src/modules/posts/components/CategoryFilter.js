@@ -4,9 +4,9 @@ import styled from 'styled-components'
 import { Flex } from 'grid-styled'
 import {
   ACCENT,
-  BACKGROUND,
+  SECONDARY_ACCENT,
   TEXT_LIGHT,
-  TEXT_LIGHT_MUTED
+  TEXT_DARK_MUTED
 } from '../../../styles/constants.js'
 
 const Categories = props => {
@@ -46,7 +46,7 @@ const CategoriesPanel = styled(Flex)`
       float: left;
       margin: 1rem;
       a {
-        color: ${TEXT_LIGHT_MUTED};
+        color: ${TEXT_DARK_MUTED};
         text-decoration: none;
         &.selected {
           color: ${ACCENT};

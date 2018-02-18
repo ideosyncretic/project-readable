@@ -9,11 +9,11 @@ import thunk from 'redux-thunk'
 import rootReducer from './reducers'
 import { Provider as RebassProvider } from 'rebass'
 import { injectGlobal } from 'styled-components'
-import { BACKGROUND } from './styles/constants'
+import { SMOKE } from './styles/constants'
 
 injectGlobal`
   * { box-sizing: border-box; }
-  body { margin: 0; background: ${BACKGROUND}}
+  body { margin: 0; background: ${SMOKE}}
 `
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
