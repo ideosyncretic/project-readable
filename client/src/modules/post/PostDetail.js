@@ -1,39 +1,34 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import { getPostRequest } from '../../actions/index.js'
+import { getPostRequest, getCommentsRequest } from '../../actions/index.js'
 import PostDetailCard from '../../components/PostDetailCard.js'
-import { Box } from 'rebass'
+import CommentCard from '../comment/components/CommentCard.js'
+import { Box, Card } from 'rebass'
 
 class PostDetail extends Component {
   componentDidMount() {
     const id = this.props.match.params.id
     this.props.getPostRequest(id)
+    this.props.getCommentsRequest(id)
   }
   render() {
-    const { post } = this.props
+    const { post, comments } = this.props
     return (
       <Box p={3}>
         <PostDetailCard post={post} />
+        {comments.map(comment => <CommentCard comment={comment} />)}
       </Box>
     )
   }
 }
-
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ getPostRequest }, dispatch)
-}
-
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     getPostRequest: id => dispatch(getPostRequest(id))
-//   }
-// }
-
-const mapStateToProps = ({ post }) => {
+const mapStateToProps = ({ post, comments }) => {
+  const commentsArr = Object.keys(comments).map(key => comments[key])
   return {
-    post
+    post,
+    comments: commentsArr
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostDetail)
+export default connect(mapStateToProps, { getPostRequest, getCommentsRequest })(
+  PostDetail
+)

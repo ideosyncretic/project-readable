@@ -4,7 +4,8 @@ import {
   GET_POST,
   ADD_POST,
   EDIT_POST,
-  DELETE_POST
+  DELETE_POST,
+  GET_COMMENTS
 } from './types'
 import { generateID } from '../utils/uuidGenerator.js'
 import axios from 'axios'
@@ -107,4 +108,17 @@ export const deletePostRequest = id => dispatch => {
 const deletePostSuccess = post => ({
   type: DELETE_POST,
   deletedPost: post
+})
+
+// get post comments
+
+export const getCommentsRequest = id => dispatch => {
+  api
+    .get(`/posts/${id}/comments`)
+    .then(res => dispatch(getCommentsSuccess(res.data)))
+}
+
+export const getCommentsSuccess = comments => ({
+  type: GET_COMMENTS,
+  comments
 })

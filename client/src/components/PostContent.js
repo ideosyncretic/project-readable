@@ -19,8 +19,8 @@ const PostContent = ({ post }) => {
       </Box>
       <h2>{title}</h2>
       <Flex>
-        {author}
-        <Box>{<TimeAgo date={timestamp} />}</Box>
+        <Box pr={2}>{author}</Box>
+        <TimeAgo date={timestamp} />
       </Flex>
       <p>{body}</p>
       <Flex justify="space-between">

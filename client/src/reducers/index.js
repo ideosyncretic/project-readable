@@ -5,7 +5,8 @@ import {
   GET_CATEGORIES,
   ADD_POST,
   EDIT_POST,
-  DELETE_POST
+  DELETE_POST,
+  GET_COMMENTS
 } from '../actions/types'
 import { reducer as formReducer } from 'redux-form'
 
@@ -57,9 +58,24 @@ const categoriesReducer = (state = {}, action) => {
   }
 }
 
+const commentsReducer = (state = {}, action) => {
+  switch (action.type) {
+    case GET_COMMENTS:
+      const { comments } = action
+      let commentsObj = {}
+      comments.map(comment => {
+        return (commentsObj[comment.id] = comment)
+      })
+      return commentsObj
+    default:
+      return state
+  }
+}
+
 const rootReducer = combineReducers({
   posts: postsReducer,
   post: postReducer,
+  comments: commentsReducer,
   categories: categoriesReducer,
   form: formReducer
 })
