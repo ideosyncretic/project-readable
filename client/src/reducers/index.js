@@ -4,7 +4,8 @@ import {
   GET_POST,
   GET_CATEGORIES,
   ADD_POST,
-  EDIT_POST
+  EDIT_POST,
+  DELETE_POST
 } from '../actions/types'
 import { reducer as formReducer } from 'redux-form'
 
@@ -34,6 +35,9 @@ const postReducer = (state = {}, action) => {
     case EDIT_POST:
       const { editedPost } = action
       return editedPost
+    case DELETE_POST:
+      const { deletedPost } = action
+      return deletedPost
     default:
       return state
   }

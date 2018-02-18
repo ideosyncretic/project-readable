@@ -3,7 +3,8 @@ import {
   GET_CATEGORIES,
   GET_POST,
   ADD_POST,
-  EDIT_POST
+  EDIT_POST,
+  DELETE_POST
 } from './types'
 import { generateID } from '../utils/uuidGenerator.js'
 import axios from 'axios'
@@ -48,7 +49,7 @@ const getCategoriesSuccess = categories => ({
   categories
 })
 
-// post
+// get post
 
 export const getPostRequest = id => dispatch => {
   return api.get(`/posts/${id}`).then(res => dispatch(getPostSuccess(res.data)))
@@ -58,6 +59,8 @@ const getPostSuccess = post => ({
   type: GET_POST,
   post
 })
+
+// add post
 
 export const addPostRequest = params => dispatch => {
   return api
@@ -72,6 +75,13 @@ export const addPostRequest = params => dispatch => {
     .then(res => dispatch(addPostSuccess(res.data)))
 }
 
+const addPostSuccess = post => ({
+  type: ADD_POST,
+  newPost: post
+})
+
+// edit post
+
 export const editPostRequest = params => dispatch => {
   return api
     .put(`/posts/${params.id}`, {
@@ -81,12 +91,20 @@ export const editPostRequest = params => dispatch => {
     .then(res => dispatch(editPostSuccess(res.data)))
 }
 
-const addPostSuccess = post => ({
-  type: ADD_POST,
-  newPost: post
-})
-
 const editPostSuccess = post => ({
   type: EDIT_POST,
   editedPost: post
+})
+
+// delete post
+
+export const deletePostRequest = id => dispatch => {
+  return api
+    .delete(`/posts/${id}`)
+    .then(res => dispatch(deletePostSuccess(res.data)))
+}
+
+const deletePostSuccess = post => ({
+  type: DELETE_POST,
+  deletedPost: post
 })

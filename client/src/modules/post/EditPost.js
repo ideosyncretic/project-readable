@@ -5,7 +5,8 @@ import EditPostForm from './components/EditPostForm'
 import {
   getCategoriesRequest,
   getPostRequest,
-  editPostRequest
+  editPostRequest,
+  deletePostRequest
 } from '../../actions/index.js'
 
 class EditPost extends Component {
@@ -19,14 +20,21 @@ class EditPost extends Component {
     this.props.editPostRequest(params)
   }
 
+  onDelete = id => {
+    this.props.deletePostRequest(id).then(this.props.history.push('/'))
+  }
+
   render() {
     const { categories } = this.props
+    const id = this.props.match.params.id
     return (
       <EditPostForm
         categories={categories}
         handleSubmit={this.props.handleSubmit}
         onSubmit={this.onSubmit}
+        onDelete={this.onDelete}
         isAdding={false}
+        id={id}
       />
     )
   }
@@ -47,6 +55,7 @@ export default connect(
   {
     getCategoriesRequest,
     getPostRequest,
-    editPostRequest
+    editPostRequest,
+    deletePostRequest
   }
 )(EditPost)
