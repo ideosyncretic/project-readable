@@ -25,7 +25,7 @@ class PostDetail extends Component {
   compareRecency = (a, b) => b.timestamp - a.timestamp
 
   render() {
-    const { post, comments } = this.props
+    const { post, comments, notify } = this.props
     const sortedComments = [].concat(comments.sort(this.compareRecency))
     return (
       <Box>
@@ -33,10 +33,10 @@ class PostDetail extends Component {
           <PostContent post={post} handleVote={this.handleVote} isDetail />
         </Box>
         <Box mt={2}>
+          <AddComment parentId={post.id} notify={notify} />
           {sortedComments.map(comment => (
             <CommentCard key={comment.id} comment={comment} />
           ))}
-          <AddComment parentId={post.id} />
         </Box>
       </Box>
     )

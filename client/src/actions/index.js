@@ -130,7 +130,7 @@ export const votePostSuccess = post => ({
 // get post comments
 
 export const getCommentsRequest = id => dispatch => {
-  api
+  return api
     .get(`/posts/${id}/comments`)
     .then(res => dispatch(getCommentsSuccess(res.data)))
 }
@@ -143,7 +143,7 @@ export const getCommentsSuccess = comments => ({
 // add comment
 
 export const addCommentRequest = (params, parentId) => dispatch => {
-  api
+  return api
     .post(`/comments`, {
       id: generateID(),
       parentId: parentId,

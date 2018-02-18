@@ -6,9 +6,9 @@ import { addCommentRequest } from '../../actions'
 import InputField from '../post/components/InputField.js'
 
 class AddComment extends Component {
-  onSubmit = (params, dispatch, props) => {
-    const { parentId } = props
-    this.props.addCommentRequest(params, parentId)
+  onSubmit = params => {
+    const { parentId, notify, addCommentRequest } = this.props
+    addCommentRequest(params, parentId).then(notify('Comment posted!'))
   }
 
   render() {
@@ -44,6 +44,4 @@ const formOptions = {
 
 AddComment = reduxForm(formOptions)(AddComment)
 
-export default connect(null, {
-  addCommentRequest
-})(AddComment)
+export default connect(null, { addCommentRequest })(AddComment)
