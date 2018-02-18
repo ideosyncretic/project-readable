@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Card, Box } from 'rebass'
+import { Card } from 'rebass'
 import PostContent from './PostContent.js'
 import { MIDNIGHT_5 } from '../../../styles/colors.js'
 

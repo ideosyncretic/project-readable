@@ -6,7 +6,8 @@ import {
   EDIT_POST,
   DELETE_POST,
   GET_COMMENTS,
-  VOTE_POST
+  VOTE_POST,
+  ADD_COMMENT
 } from './types'
 import { generateID } from '../utils/uuidGenerator.js'
 import axios from 'axios'
@@ -137,4 +138,23 @@ export const getCommentsRequest = id => dispatch => {
 export const getCommentsSuccess = comments => ({
   type: GET_COMMENTS,
   comments
+})
+
+// add comment
+
+export const addCommentRequest = (params, parentId) => dispatch => {
+  api
+    .post(`/comments`, {
+      id: generateID(),
+      parentId: parentId,
+      timestamp: Date.now(),
+      body: params.body,
+      author: params.author
+    })
+    .then(res => dispatch(addCommentSuccess(res.data)))
+}
+
+export const addCommentSuccess = comment => ({
+  type: ADD_COMMENT,
+  newComment: comment
 })

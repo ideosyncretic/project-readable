@@ -7,7 +7,8 @@ import {
   EDIT_POST,
   VOTE_POST,
   DELETE_POST,
-  GET_COMMENTS
+  GET_COMMENTS,
+  ADD_COMMENT
 } from '../actions/types'
 import { reducer as formReducer } from 'redux-form'
 
@@ -80,6 +81,12 @@ const commentsReducer = (state = {}, action) => {
         return (commentsObj[comment.id] = comment)
       })
       return commentsObj
+    case ADD_COMMENT:
+      const { newComment } = action
+      return {
+        ...state,
+        [newComment.id]: newComment
+      }
     default:
       return state
   }
