@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { getPostRequest } from '../../actions/index.js'
-import PostCard from '../../components/PostCard.js'
+import PostDetailCard from '../../components/PostDetailCard.js'
 import { Box } from 'rebass'
 
 class PostDetail extends Component {
@@ -14,7 +14,7 @@ class PostDetail extends Component {
     const { post } = this.props
     return (
       <Box p={3}>
-        <PostCard post={post} />
+        <PostDetailCard post={post} />
       </Box>
     )
   }

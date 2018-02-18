@@ -5,7 +5,7 @@ import { Card } from 'rebass'
 import { Box } from 'rebass'
 import PostContent from './PostContent.js'
 
-const StyledPostCard = styled(Card)`
+const StyledPostDetailCard = styled(Card)`
   padding: 2rem;
   margin-bottom: 1rem;
   text-align: left;
@@ -17,7 +17,7 @@ const StyledPostCard = styled(Card)`
   }
 `
 
-export const PostCard = ({ post }) => {
+export const PostDetailCard = ({ post }) => {
   const {
     id,
     title,
@@ -30,15 +30,20 @@ export const PostCard = ({ post }) => {
   } = post
   return post ? (
     !deleted ? (
-      <StyledPostCard>
+      <StyledPostDetailCard>
         <Link to={`/post/${id}`}>
+          <Box>
+            <Link to={`/post/edit/${id}`}>Edit</Link>
+          </Box>
           <PostContent post={post} />
         </Link>
-      </StyledPostCard>
+      </StyledPostDetailCard>
     ) : (
-      <StyledPostCard>Sorry, this post has been deleted.</StyledPostCard>
+      <StyledPostDetailCard>
+        Sorry, this post has been deleted.
+      </StyledPostDetailCard>
     )
   ) : null
 }
 
-export default PostCard
+export default PostDetailCard

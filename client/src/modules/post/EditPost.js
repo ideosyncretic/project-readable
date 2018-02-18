@@ -17,7 +17,7 @@ class EditPost extends Component {
   }
 
   onSubmit = params => {
-    this.props.editPostRequest(params)
+    this.props.editPostRequest(params).then(this.props.history.push('/'))
   }
 
   onDelete = id => {
