@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import TimeAgo from 'react-timeago'
-import { Flex, Box, Badge } from 'rebass'
+import { Flex, Box, Badge, ButtonTransparent } from 'rebass'
+import FaEdit from 'react-icons/lib/fa/edit'
 import Votes from './Votes'
 import { ACCENT } from '../../../styles/colors.js'
 
@@ -18,14 +19,20 @@ const PostContent = ({ post, handleVote, isDetail }) => {
   } = post
   return (
     <Flex direction="column">
-      {isDetail ? (
+      <Flex justify="space-between">
         <Box>
-          <Link to={`/post/edit/${id}`}>Edit</Link>
+          <Badge bg={ACCENT}>{category}</Badge>
         </Box>
-      ) : null}
-      <Box>
-        <Badge bg={ACCENT}>{category}</Badge>
-      </Box>
+        {isDetail ? (
+          <Box>
+            <Link to={`/post/edit/${id}`}>
+              <ButtonTransparent>
+                <FaEdit /> Edit
+              </ButtonTransparent>
+            </Link>
+          </Box>
+        ) : null}
+      </Flex>
       <h2>{title}</h2>
       <Flex>
         <Box pr={2}>{author}</Box>

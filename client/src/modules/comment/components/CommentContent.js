@@ -6,11 +6,11 @@ const CommentContent = ({ comment }) => {
   const { author, timestamp, body, voteScore } = comment
   return (
     <Flex direction="column">
-      <p>{body}</p>
       <Flex pb={2}>
         <Box pr={2}>{author}</Box>
         <TimeAgo date={timestamp} />
       </Flex>
+      <p>{body}</p>
       <Flex>
         <Box>{voteScore} votes</Box>{' '}
       </Flex>

@@ -25,11 +25,15 @@ class PostDetail extends Component {
   render() {
     const { post, comments } = this.props
     return (
-      <Box p={3} bg={WHITE}>
-        <PostContent post={post} handleVote={this.handleVote} isDetail />
-        {comments.map(comment => (
-          <CommentCard key={comment.id} comment={comment} />
-        ))}
+      <Box>
+        <Box p={3} bg={WHITE}>
+          <PostContent post={post} handleVote={this.handleVote} isDetail />
+        </Box>
+        <Box mt={2}>
+          {comments.map(comment => (
+            <CommentCard key={comment.id} comment={comment} />
+          ))}
+        </Box>
       </Box>
     )
   }
