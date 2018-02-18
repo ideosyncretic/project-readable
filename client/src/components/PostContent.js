@@ -1,19 +1,36 @@
 import React from 'react'
 import TimeAgo from 'react-timeago'
-import { Flex, Box } from 'rebass'
+import { Flex, Box, Badge } from 'rebass'
 
 const PostContent = ({ post }) => {
-  const { title, author, timestamp, body, category, voteScore } = post
+  const {
+    title,
+    author,
+    timestamp,
+    body,
+    category,
+    voteScore,
+    commentCount
+  } = post
   return (
     <Flex direction="column">
+      <Box>
+        <Badge>{category}</Badge>
+      </Box>
       <h2>{title}</h2>
       <Flex>
         {author}
         <Box>{<TimeAgo date={timestamp} />}</Box>
-        <Box pl={2}>{category}</Box>
       </Flex>
       <p>{body}</p>
-      <p>{voteScore} votes</p>
+      <Flex justify="space-between">
+        <Box>{voteScore} votes</Box>{' '}
+        <Box>
+          {commentCount > 1 || commentCount === 0
+            ? `${commentCount} comments`
+            : `1 comment`}
+        </Box>
+      </Flex>
     </Flex>
   )
 }

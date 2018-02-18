@@ -18,16 +18,7 @@ const StyledPostCard = styled(Card)`
 `
 
 export const PostCard = ({ post }) => {
-  const {
-    id,
-    title,
-    body,
-    timestamp,
-    author,
-    category,
-    voteScore,
-    deleted
-  } = post
+  const { id, deleted } = post
   return post ? (
     !deleted ? (
       <StyledPostCard>
