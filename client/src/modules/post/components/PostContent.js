@@ -1,11 +1,13 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import TimeAgo from 'react-timeago'
 import { Flex, Box, Badge } from 'rebass'
 import Votes from './Votes'
 import { ACCENT } from '../../../styles/colors.js'
 
-const PostContent = ({ post, handleVote }) => {
+const PostContent = ({ post, handleVote, isDetail }) => {
   const {
+    id,
     title,
     author,
     timestamp,
@@ -16,6 +18,11 @@ const PostContent = ({ post, handleVote }) => {
   } = post
   return (
     <Flex direction="column">
+      {isDetail ? (
+        <Box>
+          <Link to={`/post/edit/${id}`}>Edit</Link>
+        </Box>
+      ) : null}
       <Box>
         <Badge bg={ACCENT}>{category}</Badge>
       </Box>
@@ -26,7 +33,7 @@ const PostContent = ({ post, handleVote }) => {
       </Flex>
       <p>{body}</p>
       <Flex justify="space-between">
-        <Votes voteScore={voteScore} handleVote={handleVote} />
+        <Votes voteScore={voteScore} handleVote={handleVote} id={id} />
         <Box>
           {commentCount > 1 || commentCount === 0
             ? `${commentCount} comments`

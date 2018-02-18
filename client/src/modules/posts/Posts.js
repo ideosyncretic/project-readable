@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import { getPostsRequest, getCategoriesRequest } from '../../actions/index.js'
+import {
+  getPostsRequest,
+  getCategoriesRequest,
+  votePostRequest
+} from '../../actions/index.js'
 import PostCard from '../post/components/PostCard.js'
 import CategoryFilter from './components/CategoryFilter.js'
 import SortToggle from './components/SortToggle.js'
@@ -24,6 +27,10 @@ class Posts extends Component {
 
   handleSort = sortBy => {
     this.setState({ sortBy })
+  }
+
+  handleVote = (id, voteOption) => {
+    this.props.votePostRequest(id, voteOption)
   }
 
   render() {
@@ -54,25 +61,20 @@ class Posts extends Component {
           </Box>
           <SortToggle handleSort={this.handleSort} />
         </PostFilter>
-        <PostsList posts={sortedPosts} />
+        <PostsList posts={sortedPosts} handleVote={this.handleVote} />
       </div>
     )
   }
 }
 
-const PostsList = ({ posts }) => {
+const PostsList = ({ posts, handleVote }) => {
   return (
     <Box p={3}>
       {posts.map(post => {
-        return <PostCard key={post.id} post={post} />
+        return <PostCard key={post.id} post={post} handleVote={handleVote} />
       })}
     </Box>
   )
-}
-
-const mapDispatchToProps = dispatch => {
-  // bind action creators
-  return bindActionCreators({ getPostsRequest, getCategoriesRequest }, dispatch)
 }
 
 const mapStateToProps = ({ posts, categories }) => {
@@ -88,5 +90,8 @@ const mapStateToProps = ({ posts, categories }) => {
 const PostFilter = styled(Flex)`
   background: ${WHITE};
 `
-
-export default connect(mapStateToProps, mapDispatchToProps)(Posts)
+export default connect(mapStateToProps, {
+  getPostsRequest,
+  getCategoriesRequest,
+  votePostRequest
+})(Posts)

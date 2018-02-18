@@ -1,9 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getPostRequest, getCommentsRequest } from '../../actions/index.js'
-import PostCard from './components/PostCard.js'
+import { Link } from 'react-router-dom'
+import {
+  getPostRequest,
+  getCommentsRequest,
+  votePostRequest
+} from '../../actions/index.js'
+import PostContent from './components/PostContent.js'
 import CommentCard from '../comment/components/CommentCard.js'
 import { Box } from 'rebass'
+import { WHITE } from '../../styles/colors'
 
 class PostDetail extends Component {
   componentDidMount() {
@@ -11,11 +17,16 @@ class PostDetail extends Component {
     this.props.getPostRequest(id)
     this.props.getCommentsRequest(id)
   }
+
+  handleVote = (id, voteOption) => {
+    this.props.votePostRequest(id, voteOption)
+  }
+
   render() {
     const { post, comments } = this.props
     return (
-      <Box p={3}>
-        <PostCard post={post} />
+      <Box p={3} bg={WHITE}>
+        <PostContent post={post} handleVote={this.handleVote} isDetail />
         {comments.map(comment => (
           <CommentCard key={comment.id} comment={comment} />
         ))}
@@ -31,6 +42,8 @@ const mapStateToProps = ({ post, comments }) => {
   }
 }
 
-export default connect(mapStateToProps, { getPostRequest, getCommentsRequest })(
-  PostDetail
-)
+export default connect(mapStateToProps, {
+  getPostRequest,
+  getCommentsRequest,
+  votePostRequest
+})(PostDetail)

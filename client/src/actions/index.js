@@ -5,7 +5,8 @@ import {
   ADD_POST,
   EDIT_POST,
   DELETE_POST,
-  GET_COMMENTS
+  GET_COMMENTS,
+  VOTE_POST
 } from './types'
 import { generateID } from '../utils/uuidGenerator.js'
 import axios from 'axios'
@@ -108,6 +109,21 @@ export const deletePostRequest = id => dispatch => {
 const deletePostSuccess = post => ({
   type: DELETE_POST,
   deletedPost: post
+})
+
+// vote on post
+
+export const votePostRequest = (id, voteOption) => dispatch => {
+  return api
+    .post(`/posts/${id}`, {
+      option: voteOption
+    })
+    .then(res => dispatch(votePostSuccess(res.data)))
+}
+
+export const votePostSuccess = post => ({
+  type: VOTE_POST,
+  votedPost: post
 })
 
 // get post comments

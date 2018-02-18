@@ -5,6 +5,7 @@ import {
   GET_CATEGORIES,
   ADD_POST,
   EDIT_POST,
+  VOTE_POST,
   DELETE_POST,
   GET_COMMENTS
 } from '../actions/types'
@@ -20,6 +21,15 @@ const postsReducer = (state = {}, action) => {
         return (postsObj[post.id] = post)
       })
       return postsObj
+    case VOTE_POST:
+      const { votedPost } = action
+      return {
+        ...state,
+        [votedPost.id]: {
+          ...state[votedPost.id],
+          voteScore: votedPost.voteScore
+        }
+      }
     default:
       return state
   }
@@ -36,6 +46,9 @@ const postReducer = (state = {}, action) => {
     case EDIT_POST:
       const { editedPost } = action
       return editedPost
+    case VOTE_POST:
+      const { votedPost } = action
+      return votedPost
     case DELETE_POST:
       const { deletedPost } = action
       return deletedPost

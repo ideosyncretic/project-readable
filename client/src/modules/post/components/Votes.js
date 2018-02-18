@@ -4,13 +4,23 @@ import FaArrowUp from 'react-icons/lib/fa/arrow-up'
 import FaArrowDown from 'react-icons/lib/fa/arrow-down'
 import styled from 'styled-components'
 
-const Votes = ({ voteScore, direction, handleVote }) => (
+const Votes = ({ voteScore, handleVote, id }) => (
   <Box>
-    <VoteButton onClick={handleVote}>
+    <VoteButton
+      onClick={e => {
+        e.preventDefault()
+        handleVote(id, 'upVote')
+      }}
+    >
       <FaArrowUp />
     </VoteButton>
     {voteScore} {voteScore === 1 ? 'vote' : 'votes'}
-    <VoteButton onClick={handleVote}>
+    <VoteButton
+      onClick={e => {
+        e.preventDefault()
+        handleVote(id, 'downVote')
+      }}
+    >
       <FaArrowDown />
     </VoteButton>
   </Box>
