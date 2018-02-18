@@ -1,6 +1,8 @@
 import React from 'react'
 import TimeAgo from 'react-timeago'
 import { Flex, Box, Badge } from 'rebass'
+import styled from 'styled-components'
+import { ACCENT } from '../styles/constants'
 
 const PostContent = ({ post }) => {
   const {
@@ -15,7 +17,7 @@ const PostContent = ({ post }) => {
   return (
     <Flex direction="column">
       <Box>
-        <Badge>{category}</Badge>
+        <Badge bg={ACCENT}>{category}</Badge>
       </Box>
       <h2>{title}</h2>
       <Flex>
@@ -34,4 +36,5 @@ const PostContent = ({ post }) => {
     </Flex>
   )
 }
+
 export default PostContent
