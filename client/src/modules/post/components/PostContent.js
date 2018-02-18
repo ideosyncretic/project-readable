@@ -1,10 +1,10 @@
 import React from 'react'
 import TimeAgo from 'react-timeago'
 import { Flex, Box, Badge } from 'rebass'
-import Votes from '../components/Votes'
-import { ACCENT } from '../styles/colors'
+import Votes from './Votes'
+import { ACCENT } from '../../../styles/colors.js'
 
-const PostContent = ({ post }) => {
+const PostContent = ({ post, handleVote }) => {
   const {
     title,
     author,
@@ -26,7 +26,7 @@ const PostContent = ({ post }) => {
       </Flex>
       <p>{body}</p>
       <Flex justify="space-between">
-        <Votes voteScore={voteScore} />
+        <Votes voteScore={voteScore} handleVote={handleVote} />
         <Box>
           {commentCount > 1 || commentCount === 0
             ? `${commentCount} comments`

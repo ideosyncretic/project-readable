@@ -1,11 +1,13 @@
 import React from 'react'
-import { withRouter } from 'react-router-dom'
-import { Card } from 'rebass'
+import { withRouter, Link } from 'react-router-dom'
+import { Card, Box } from 'rebass'
 import PostContent from './PostContent.js'
-import { TEXT_LIGHT_MUTED } from '../styles/colors'
+import { MIDNIGHT_5 } from '../../../styles/colors.js'
 
 export const PostCard = props => {
-  const { post } = props
+  const { post, handleVote } = props
+  const path = props.match.params.id
+  console.log(path)
   const { id, deleted } = post
 
   let redirect = () => {
@@ -14,8 +16,13 @@ export const PostCard = props => {
 
   return post ? (
     !deleted ? (
-      <StyledPostCard onClick={redirect}>
-        <PostContent post={post} />
+      <StyledPostCard path={path} onClick={path ? null : redirect}>
+        {path ? (
+          <Box>
+            <Link to={`/post/edit/${id}`}>Edit</Link>
+          </Box>
+        ) : null}
+        <PostContent post={post} handleVote={handleVote} />
       </StyledPostCard>
     ) : (
       <StyledPostCard>Sorry, this post has been deleted.</StyledPostCard>
@@ -35,8 +42,8 @@ const StyledPostCard = Card.extend`
     }
   }
   &:hover {
-    cursor: pointer;
-    box-shadow: 0 0 5px 2px ${TEXT_LIGHT_MUTED};
+    cursor: ${({ path }) => (path ? 'default' : 'pointer')};
+    box-shadow: 0 0 10px 0 ${MIDNIGHT_5};
   }
 `
 

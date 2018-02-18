@@ -4,13 +4,13 @@ import FaArrowUp from 'react-icons/lib/fa/arrow-up'
 import FaArrowDown from 'react-icons/lib/fa/arrow-down'
 import styled from 'styled-components'
 
-const Votes = ({ voteScore, direction }) => (
+const Votes = ({ voteScore, direction, handleVote }) => (
   <Box>
-    <VoteButton onClick={() => console.log('Voted up! Yay!')}>
+    <VoteButton onClick={handleVote}>
       <FaArrowUp />
     </VoteButton>
     {voteScore} {voteScore === 1 ? 'vote' : 'votes'}
-    <VoteButton onClick={() => console.log('Voted down! Boo!')}>
+    <VoteButton onClick={handleVote}>
       <FaArrowDown />
     </VoteButton>
   </Box>
@@ -27,9 +27,7 @@ const VoteButton = styled.button`
   cursor: pointer;
   outline: inherit;
   :hover {
-    box-shadow: none;
-  }
-  a {
-    color: inherit;
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.02);
   }
 `
