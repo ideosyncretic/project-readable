@@ -33,6 +33,9 @@ const InputField = ({ input, placeholder, label, type, options, disabled }) => {
         <Box pb={3}>
           <Label htmlFor={input.name}>{label}</Label>
           <Select {...input} id={input.name} disabled={disabled}>
+            <option value="" selected disabled hidden>
+              Choose a category
+            </option>
             {options.map(option => (
               <option key={option} value={option}>
                 {option}
