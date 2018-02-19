@@ -3,7 +3,7 @@ import { reduxForm, Field, reset } from 'redux-form'
 import { connect } from 'react-redux'
 import { Box, Card, Button } from 'rebass'
 import { addCommentRequest } from '../../actions'
-import InputField from '../post/components/InputField.js'
+import InputField from '../../components/InputField.js'
 
 class AddComment extends Component {
   onSubmit = params => {

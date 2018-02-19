@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import TimeAgo from 'react-timeago'
 import { Flex, Box, Badge, ButtonTransparent } from 'rebass'
 import FaEdit from 'react-icons/lib/fa/edit'
-import Votes from './Votes'
+import Votes from '../../../components/Votes.js'
 import { ACCENT } from '../../../styles/colors.js'
 
 const PostContent = ({ post, handleVote, isDetail }) => {

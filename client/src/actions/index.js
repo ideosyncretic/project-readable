@@ -7,7 +7,11 @@ import {
   DELETE_POST,
   GET_COMMENTS,
   VOTE_POST,
-  ADD_COMMENT
+  ADD_COMMENT,
+  GET_COMMENT,
+  EDIT_COMMENT,
+  DELETE_COMMENT,
+  VOTE_COMMENT
 } from './types'
 import { generateID } from '../utils/uuidGenerator.js'
 import axios from 'axios'
@@ -78,9 +82,9 @@ export const addPostRequest = params => dispatch => {
     .then(res => dispatch(addPostSuccess(res.data)))
 }
 
-const addPostSuccess = post => ({
+const addPostSuccess = newPost => ({
   type: ADD_POST,
-  newPost: post
+  newPost
 })
 
 // edit post
@@ -94,9 +98,9 @@ export const editPostRequest = params => dispatch => {
     .then(res => dispatch(editPostSuccess(res.data)))
 }
 
-const editPostSuccess = post => ({
+const editPostSuccess = editedPost => ({
   type: EDIT_POST,
-  editedPost: post
+  editedPost
 })
 
 // delete post
@@ -107,9 +111,9 @@ export const deletePostRequest = id => dispatch => {
     .then(res => dispatch(deletePostSuccess(res.data)))
 }
 
-const deletePostSuccess = post => ({
+const deletePostSuccess = deletedPost => ({
   type: DELETE_POST,
-  deletedPost: post
+  deletedPost
 })
 
 // vote on post
@@ -122,9 +126,9 @@ export const votePostRequest = (id, voteOption) => dispatch => {
     .then(res => dispatch(votePostSuccess(res.data)))
 }
 
-export const votePostSuccess = post => ({
+export const votePostSuccess = votedPost => ({
   type: VOTE_POST,
-  votedPost: post
+  votedPost
 })
 
 // get post comments
@@ -154,7 +158,64 @@ export const addCommentRequest = (params, parentId) => dispatch => {
     .then(res => dispatch(addCommentSuccess(res.data)))
 }
 
-export const addCommentSuccess = comment => ({
+export const addCommentSuccess = newComment => ({
   type: ADD_COMMENT,
-  newComment: comment
+  newComment
+})
+
+// get comment
+
+export const getCommentRequest = id => dispatch => {
+  return api
+    .get(`/comments/${id}`)
+    .then(res => dispatch(getCommentSuccess(res.data)))
+}
+
+export const getCommentSuccess = comment => ({
+  type: GET_COMMENT,
+  comment
+})
+
+// edit comment
+
+export const editCommentRequest = params => dispatch => {
+  return api
+    .put(`/comments/${params.id}`, {
+      timestamp: Date.now(),
+      body: params.body
+    })
+    .then(res => dispatch(editCommentSuccess(res.data)))
+}
+
+export const editCommentSuccess = editedComment => ({
+  type: EDIT_COMMENT,
+  editedComment
+})
+
+// delete comment
+
+export const deleteCommentRequest = id => dispatch => {
+  return api
+    .delete(`/comments/${id}`)
+    .then(res => dispatch(deleteCommentSuccess(res.data)))
+}
+
+export const deleteCommentSuccess = deletedComment => ({
+  type: DELETE_COMMENT,
+  deletedComment
+})
+
+// vote comment
+
+export const voteCommentRequest = (id, voteOption) => dispatch => {
+  return api
+    .post(`/comments/${id}`, {
+      option: voteOption
+    })
+    .then(res => dispatch(voteCommentSuccess(res.data)))
+}
+
+export const voteCommentSuccess = votedComment => ({
+  type: VOTE_COMMENT,
+  votedComment
 })

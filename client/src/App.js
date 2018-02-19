@@ -5,6 +5,7 @@ import Posts from './modules/posts/Posts.js'
 import PostDetail from './modules/post/PostDetail.js'
 import AddPost from './modules/post/AddPost.js'
 import EditPost from './modules/post/EditPost.js'
+import EditComment from './modules/comment/EditComment.js'
 import { ToastContainer, toast } from 'react-toastify'
 
 const App = () => {
@@ -27,6 +28,7 @@ const App = () => {
             render={props => <PostDetail {...props} notify={notify} />}
           />
           <Route exact path="/post/edit/:id" component={EditPost} />
+          <Route exact path="/comment/edit/:id" component={EditComment} />
           <Route exact path="/:category?" component={Posts} />
         </Switch>
       </main>

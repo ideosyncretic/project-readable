@@ -1,10 +1,10 @@
 import React from 'react'
 import { Field } from 'redux-form'
-import InputField from './InputField'
+import InputField from '../../../components/InputField.js'
 import { Box, ButtonOutline } from 'rebass'
 
 const EditPostForm = props => {
-  const { id, categories, onSubmit, isAdding, onDelete } = props
+  const { categories, onSubmit, isAdding, onDelete } = props
   return (
     <Box
       is="form"
@@ -50,7 +50,7 @@ const EditPostForm = props => {
         <ButtonOutline
           onClick={e => {
             e.preventDefault()
-            onDelete(id)
+            onDelete()
           }}
         >
           Delete post

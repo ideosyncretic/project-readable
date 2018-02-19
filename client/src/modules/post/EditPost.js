@@ -21,22 +21,22 @@ class EditPost extends Component {
     this.props.editPostRequest(params).then(this.props.history.push('/'))
   }
 
-  onDelete = id => {
+  onDelete = () => {
+    const { id } = this.props.post
     this.props.deletePostRequest(id).then(this.props.history.push('/'))
   }
 
   render() {
-    const { categories } = this.props
-    const id = this.props.match.params.id
+    const { categories, handleSubmit } = this.props
+    const { id } = this.props.post
     return (
       <Card>
         <EditPostForm
           categories={categories}
-          handleSubmit={this.props.handleSubmit}
+          handleSubmit={handleSubmit}
           onSubmit={this.onSubmit}
           onDelete={this.onDelete}
           isAdding={false}
-          id={id}
         />
       </Card>
     )
@@ -53,7 +53,8 @@ EditPost = reduxForm(formOptions)(EditPost)
 export default connect(
   state => ({
     initialValues: state.post,
-    categories: Object.keys(state.categories)
+    categories: Object.keys(state.categories),
+    post: state.post
   }),
   {
     getCategoriesRequest,

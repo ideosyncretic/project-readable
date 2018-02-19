@@ -8,9 +8,14 @@ import {
   VOTE_POST,
   DELETE_POST,
   GET_COMMENTS,
-  ADD_COMMENT
+  ADD_COMMENT,
+  GET_COMMENT,
+  EDIT_COMMENT,
+  DELETE_COMMENT,
+  VOTE_COMMENT
 } from '../actions/types'
 import { reducer as formReducer } from 'redux-form'
+import _ from 'lodash'
 
 const postsReducer = (state = {}, action) => {
   switch (action.type) {
@@ -87,6 +92,31 @@ const commentsReducer = (state = {}, action) => {
         ...state,
         [newComment.id]: newComment
       }
+    case EDIT_COMMENT:
+      const { editedComment } = action
+      return {
+        ...state,
+        [editedComment.id]: editedComment
+      }
+    case DELETE_COMMENT:
+      const { deletedComment } = action
+      return _.omit(state, deletedComment.id)
+    case VOTE_COMMENT:
+      const { votedComment } = action
+      return {
+        ...state,
+        [votedComment.id]: votedComment
+      }
+    default:
+      return state
+  }
+}
+
+const commentReducer = (state = {}, action) => {
+  switch (action.type) {
+    case GET_COMMENT:
+      const { comment } = action
+      return comment
     default:
       return state
   }
@@ -96,6 +126,7 @@ const rootReducer = combineReducers({
   posts: postsReducer,
   post: postReducer,
   comments: commentsReducer,
+  comment: commentReducer,
   categories: categoriesReducer,
   form: formReducer
 })

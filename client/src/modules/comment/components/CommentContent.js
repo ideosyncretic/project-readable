@@ -1,18 +1,29 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import TimeAgo from 'react-timeago'
-import { Flex, Box } from 'rebass'
+import { Flex, Box, Button } from 'rebass'
+import Votes from '../../../components/Votes.js'
 
 const CommentContent = ({ comment }) => {
-  const { author, timestamp, body, voteScore } = comment
+  const { id, author, timestamp, body, voteScore } = comment
   return (
     <Flex direction="column">
-      <Flex pb={2}>
-        <Box pr={2}>{author}</Box>
-        <TimeAgo date={timestamp} />
+      <Flex pb={2} justify="space-between">
+        <Flex>
+          <Box mr={2}>{author}</Box>
+          <Box>
+            <TimeAgo date={timestamp} />
+          </Box>
+        </Flex>
+        <Box>
+          <Link to={`/comment/edit/${id}`}>
+            <Button children="Edit" />
+          </Link>
+        </Box>
       </Flex>
       <p>{body}</p>
       <Flex>
-        <Box>{voteScore} votes</Box>{' '}
+        <Votes voteScore={voteScore} />
       </Flex>
     </Flex>
   )
