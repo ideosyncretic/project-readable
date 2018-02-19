@@ -28,9 +28,7 @@ const StyledPostCard = Card.extend`
   text-align: left;
   a {
     text-decoration: none;
-    &:visited {
-      color: inherit;
-    }
+    color: inherit;
   }
   &:hover {
     cursor: pointer;
