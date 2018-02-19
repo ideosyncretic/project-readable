@@ -4,7 +4,7 @@ import TimeAgo from 'react-timeago'
 import { Flex, Box, Button } from 'rebass'
 import Votes from '../../../components/Votes.js'
 
-const CommentContent = ({ comment }) => {
+const CommentContent = ({ comment, handleVote }) => {
   const { id, author, timestamp, body, voteScore } = comment
   return (
     <Flex direction="column">
@@ -23,7 +23,7 @@ const CommentContent = ({ comment }) => {
       </Flex>
       <p>{body}</p>
       <Flex>
-        <Votes voteScore={voteScore} />
+        <Votes voteScore={voteScore} handleVote={handleVote} id={id} />
       </Flex>
     </Flex>
   )

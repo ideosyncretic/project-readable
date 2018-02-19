@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 import {
   getPostRequest,
   getCommentsRequest,
-  votePostRequest
+  votePostRequest,
+  voteCommentRequest
 } from '../../actions/index.js'
 import PostContent from './components/PostContent.js'
 import CommentCard from '../comment/components/CommentCard.js'
@@ -18,8 +19,12 @@ class PostDetail extends Component {
     this.props.getCommentsRequest(id)
   }
 
-  handleVote = (id, voteOption) => {
+  handlePostVote = (id, voteOption) => {
     this.props.votePostRequest(id, voteOption)
+  }
+
+  handleCommentVote = (id, voteOption) => {
+    this.props.voteCommentRequest(id, voteOption)
   }
 
   compareRecency = (a, b) => b.timestamp - a.timestamp
@@ -30,12 +35,16 @@ class PostDetail extends Component {
     return (
       <Box>
         <Box p={3} bg={WHITE}>
-          <PostContent post={post} handleVote={this.handleVote} isDetail />
+          <PostContent post={post} handleVote={this.handlePostVote} isDetail />
         </Box>
         <Box mt={2}>
           <AddComment parentId={post.id} notify={notify} />
           {sortedComments.map(comment => (
-            <CommentCard key={comment.id} comment={comment} />
+            <CommentCard
+              key={comment.id}
+              comment={comment}
+              handleVote={this.handleCommentVote}
+            />
           ))}
         </Box>
       </Box>
@@ -53,5 +62,6 @@ const mapStateToProps = ({ post, comments }) => {
 export default connect(mapStateToProps, {
   getPostRequest,
   getCommentsRequest,
-  votePostRequest
+  votePostRequest,
+  voteCommentRequest
 })(PostDetail)

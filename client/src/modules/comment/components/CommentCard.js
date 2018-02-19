@@ -15,12 +15,12 @@ const StyledCommentCard = styled(Card)`
   }
 `
 
-export const CommentCard = ({ comment }) => {
+export const CommentCard = ({ comment, handleVote }) => {
   const { deleted } = comment
   return comment ? (
     !deleted ? (
       <StyledCommentCard>
-        <CommentContent comment={comment} />
+        <CommentContent comment={comment} handleVote={handleVote} />
       </StyledCommentCard>
     ) : (
       <StyledCommentCard>Sorry, this post has been deleted.</StyledCommentCard>
