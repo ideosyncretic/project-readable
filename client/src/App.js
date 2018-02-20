@@ -24,10 +24,10 @@ const App = () => {
           <Route exact path="/post/add" component={AddPost} />
           <Route
             exact
-            path="/post/:id"
+            path="/:category/:postID"
             render={props => <PostDetail {...props} notify={notify} />}
           />
-          <Route exact path="/post/edit/:id" component={EditPost} />
+          <Route exact path="/:category/edit/:id" component={EditPost} />
           <Route exact path="/comment/edit/:id" component={EditComment} />
           <Route exact path="/:category?" component={Posts} />
         </Switch>

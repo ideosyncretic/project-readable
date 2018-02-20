@@ -11,7 +11,7 @@ export const PostCard = props => {
   return post ? (
     !deleted ? (
       <StyledPostCard>
-        <Link to={`/post/${id}`}>
+        <Link to={`/${post.category}/${id}`}>
           <PostContent post={post} handleVote={handleVote} />
         </Link>
       </StyledPostCard>

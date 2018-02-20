@@ -14,7 +14,7 @@ import { WHITE } from '../../styles/colors'
 
 class PostDetail extends Component {
   componentDidMount() {
-    const id = this.props.match.params.id
+    const id = this.props.match.params.postID
     this.props.getPostRequest(id)
     this.props.getCommentsRequest(id)
   }

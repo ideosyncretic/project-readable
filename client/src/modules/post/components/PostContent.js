@@ -25,7 +25,7 @@ const PostContent = ({ post, handleVote, isDetail }) => {
         </Box>
         {isDetail ? (
           <Box>
-            <Link to={`/post/edit/${id}`}>
+            <Link to={`/${category}/edit/${id}`}>
               <ButtonTransparent>
                 <FaEdit /> Edit
               </ButtonTransparent>
