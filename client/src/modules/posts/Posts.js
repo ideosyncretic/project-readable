@@ -35,8 +35,7 @@ class Posts extends Component {
   }
 
   handleDelete = id => {
-    this.props.deletePostRequest(id)
-    // .then(this.props.history.push('/'))
+    this.props.deletePostRequest(id).then(this.props.notify('Post deleted!'))
   }
 
   render() {

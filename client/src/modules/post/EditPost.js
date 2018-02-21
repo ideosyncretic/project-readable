@@ -18,12 +18,20 @@ class EditPost extends Component {
   }
 
   onSubmit = params => {
-    this.props.editPostRequest(params).then(this.props.history.push('/'))
+    const { notify } = this.props
+    this.props
+      .editPostRequest(params)
+      .then(notify('Post edited!'))
+      .then(this.props.history.push('/'))
   }
 
   handleDelete = () => {
+    const { notify } = this.props
     const { id } = this.props.post
-    this.props.deletePostRequest(id).then(this.props.history.push('/'))
+    this.props
+      .deletePostRequest(id)
+      .then(notify('Post deleted!'))
+      .then(this.props.history.push('/'))
   }
 
   render() {

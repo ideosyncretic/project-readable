@@ -21,15 +21,27 @@ const App = () => {
       <main>
         <ToastContainer />
         <Switch>
-          <Route exact path="/post/add" component={AddPost} />
+          <Route
+            exact
+            path="/post/add"
+            render={props => <AddPost {...props} notify={notify} />}
+          />
           <Route
             exact
             path="/:category/:postID"
             render={props => <PostDetail {...props} notify={notify} />}
           />
-          <Route exact path="/:category/edit/:id" component={EditPost} />
+          <Route
+            exact
+            path="/:category/edit/:id"
+            render={props => <EditPost {...props} notify={notify} />}
+          />
           <Route exact path="/comment/edit/:id" component={EditComment} />
-          <Route exact path="/:category?" component={Posts} />
+          <Route
+            exact
+            path="/:category?"
+            render={props => <Posts {...props} notify={notify} />}
+          />
         </Switch>
       </main>
     </div>

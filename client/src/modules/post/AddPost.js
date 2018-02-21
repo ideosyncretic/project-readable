@@ -11,7 +11,11 @@ class AddPost extends Component {
   }
 
   onSubmit = params => {
-    this.props.addPostRequest(params).then(this.props.history.push('/'))
+    const { notify } = this.props
+    this.props
+      .addPostRequest(params)
+      .then(notify('Posted!'))
+      .then(this.props.history.push('/'))
   }
 
   render() {
