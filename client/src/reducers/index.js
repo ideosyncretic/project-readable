@@ -41,7 +41,20 @@ const postsReducer = (state = {}, action) => {
   }
 }
 
-const postReducer = (state = {}, action) => {
+const postReducer = (
+  state = {
+    id: '',
+    title: '',
+    timestamp: '',
+    body: '',
+    author: '',
+    category: '',
+    voteScore: 0,
+    commentCount: 0,
+    deleted: false
+  },
+  action
+) => {
   switch (action.type) {
     case GET_POST:
       const { post } = action

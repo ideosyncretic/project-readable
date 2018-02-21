@@ -13,10 +13,20 @@ import { Box } from 'rebass'
 import { WHITE } from '../../styles/colors'
 
 class PostDetail extends Component {
+  state = {
+    isDeleted: false
+  }
+
   componentDidMount() {
     const id = this.props.match.params.postID
     this.props.getPostRequest(id)
     this.props.getCommentsRequest(id)
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (!nextProps.post.id) {
+      this.setState({ isDeleted: true })
+    }
   }
 
   handlePostVote = (id, voteOption) => {
@@ -30,9 +40,16 @@ class PostDetail extends Component {
   compareRecency = (a, b) => b.timestamp - a.timestamp
 
   render() {
+    const { isDeleted } = this.state
     const { post, comments, notify } = this.props
     const sortedComments = [].concat(comments.sort(this.compareRecency))
-    return (
+    return isDeleted ? (
+      <Box>
+        <Box p={3} bg={WHITE}>
+          <h3>This post has been deleted!</h3>
+        </Box>
+      </Box>
+    ) : (
       <Box>
         <Box p={3} bg={WHITE}>
           <PostContent post={post} handleVote={this.handlePostVote} isDetail />
