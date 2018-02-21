@@ -17,10 +17,10 @@ class EditComment extends Component {
 
   onSubmit = params => {
     const { parentId } = params
-    console.log(params)
+    const { post } = this.props
     this.props
       .editCommentRequest(params)
-      .then(this.props.history.push(`/post/${parentId}`))
+      .then(this.props.history.push(`/${post.category}/${parentId}`))
   }
 
   handleDelete = () => {
@@ -54,7 +54,8 @@ EditComment = reduxForm(formOptions)(EditComment)
 export default connect(
   state => ({
     initialValues: state.comment,
-    comment: state.comment
+    comment: state.comment,
+    post: state.post
   }),
   {
     getCommentRequest,
