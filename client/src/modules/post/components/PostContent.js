@@ -27,7 +27,14 @@ const PostContent = ({ post, handleVote, handleDelete }) => {
           <Link to={`/${category}/edit/${id}`}>
             <ButtonOutline>Edit</ButtonOutline>
           </Link>
-          <ButtonOutline onClick={() => handleDelete(id)}>Delete</ButtonOutline>
+          <ButtonOutline
+            onClick={e => {
+              e.preventDefault()
+              handleDelete(id)
+            }}
+          >
+            Delete
+          </ButtonOutline>
         </Box>
       </Flex>
       <h2>{title}</h2>
