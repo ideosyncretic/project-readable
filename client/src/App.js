@@ -31,12 +31,12 @@ const App = () => {
             path="/:category/:postID"
             render={props => <PostDetail {...props} notify={notify} />}
           />
+          <Route exact path="/comment/edit/:id" component={EditComment} />
           <Route
             exact
             path="/:category/edit/:id"
             render={props => <EditPost {...props} notify={notify} />}
           />
-          <Route exact path="/comment/edit/:id" component={EditComment} />
           <Route
             exact
             path="/:category?"
