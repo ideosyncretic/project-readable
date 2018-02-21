@@ -21,7 +21,7 @@ class EditPost extends Component {
     this.props.editPostRequest(params).then(this.props.history.push('/'))
   }
 
-  onDelete = () => {
+  handleDelete = () => {
     const { id } = this.props.post
     this.props.deletePostRequest(id).then(this.props.history.push('/'))
   }
@@ -35,7 +35,7 @@ class EditPost extends Component {
           categories={categories}
           handleSubmit={handleSubmit}
           onSubmit={this.onSubmit}
-          onDelete={this.onDelete}
+          handleDelete={this.handleDelete}
           isAdding={false}
         />
       </Card>

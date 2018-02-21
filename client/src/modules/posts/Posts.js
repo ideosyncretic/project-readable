@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import {
   getPostsRequest,
   getCategoriesRequest,
+  deletePostRequest,
   votePostRequest
 } from '../../actions/index.js'
 import PostCard from '../post/components/PostCard.js'
@@ -33,6 +34,11 @@ class Posts extends Component {
     this.props.votePostRequest(id, voteOption)
   }
 
+  handleDelete = id => {
+    this.props.deletePostRequest(id)
+    // .then(this.props.history.push('/'))
+  }
+
   render() {
     const { categories, posts, match } = this.props
     const { sortBy } = this.state
@@ -61,17 +67,28 @@ class Posts extends Component {
           </Box>
           <SortToggle handleSort={this.handleSort} />
         </PostFilter>
-        <PostsList posts={sortedPosts} handleVote={this.handleVote} />
+        <PostsList
+          posts={sortedPosts}
+          handleVote={this.handleVote}
+          handleDelete={this.handleDelete}
+        />
       </div>
     )
   }
 }
 
-const PostsList = ({ posts, handleVote }) => {
+const PostsList = ({ posts, handleVote, handleDelete }) => {
   return (
     <Box p={3}>
       {posts.map(post => {
-        return <PostCard key={post.id} post={post} handleVote={handleVote} />
+        return (
+          <PostCard
+            key={post.id}
+            post={post}
+            handleVote={handleVote}
+            handleDelete={handleDelete}
+          />
+        )
       })}
     </Box>
   )
@@ -93,5 +110,6 @@ const PostFilter = styled(Flex)`
 export default connect(mapStateToProps, {
   getPostsRequest,
   getCategoriesRequest,
+  deletePostRequest,
   votePostRequest
 })(Posts)

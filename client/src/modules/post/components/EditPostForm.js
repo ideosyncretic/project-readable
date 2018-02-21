@@ -4,7 +4,7 @@ import InputField from '../../../components/InputField.js'
 import { Box, ButtonOutline } from 'rebass'
 
 const EditPostForm = props => {
-  const { categories, onSubmit, isAdding, onDelete } = props
+  const { categories, onSubmit, isAdding, handleDelete } = props
   return (
     <Box
       is="form"
@@ -50,7 +50,7 @@ const EditPostForm = props => {
         <ButtonOutline
           onClick={e => {
             e.preventDefault()
-            onDelete()
+            handleDelete()
           }}
         >
           Delete post

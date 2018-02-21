@@ -5,14 +5,18 @@ import PostContent from './PostContent.js'
 import { MIDNIGHT_5 } from '../../../styles/colors.js'
 
 export const PostCard = props => {
-  const { post, handleVote } = props
+  const { post, handleVote, handleDelete } = props
   const { id, deleted } = post
 
   return post ? (
     !deleted ? (
       <StyledPostCard>
         <Link to={`/${post.category}/${id}`}>
-          <PostContent post={post} handleVote={handleVote} />
+          <PostContent
+            post={post}
+            handleVote={handleVote}
+            handleDelete={handleDelete}
+          />
         </Link>
       </StyledPostCard>
     ) : (

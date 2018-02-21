@@ -1,12 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import TimeAgo from 'react-timeago'
-import { Flex, Box, Badge, ButtonTransparent } from 'rebass'
-import FaEdit from 'react-icons/lib/fa/edit'
+import { Flex, Box, Badge, ButtonOutline } from 'rebass'
 import Votes from '../../../components/Votes.js'
 import { ACCENT } from '../../../styles/colors.js'
 
-const PostContent = ({ post, handleVote, isDetail }) => {
+const PostContent = ({ post, handleVote, handleDelete }) => {
   const {
     id,
     title,
@@ -17,21 +16,19 @@ const PostContent = ({ post, handleVote, isDetail }) => {
     voteScore,
     commentCount
   } = post
+
   return (
     <Flex direction="column">
       <Flex justify="space-between">
         <Box>
           <Badge bg={ACCENT}>{category}</Badge>
         </Box>
-        {isDetail ? (
-          <Box>
-            <Link to={`/${category}/edit/${id}`}>
-              <ButtonTransparent>
-                <FaEdit /> Edit
-              </ButtonTransparent>
-            </Link>
-          </Box>
-        ) : null}
+        <Box>
+          <Link to={`/${category}/edit/${id}`}>
+            <ButtonOutline>Edit</ButtonOutline>
+          </Link>
+          <ButtonOutline onClick={() => handleDelete(id)}>Delete</ButtonOutline>
+        </Box>
       </Flex>
       <h2>{title}</h2>
       <Flex>

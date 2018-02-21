@@ -23,7 +23,7 @@ class EditComment extends Component {
       .then(this.props.history.push(`/post/${parentId}`))
   }
 
-  onDelete = () => {
+  handleDelete = () => {
     const { id, parentId } = this.props.comment
     this.props
       .deleteCommentRequest(id)
@@ -37,7 +37,7 @@ class EditComment extends Component {
         <EditCommentForm
           handleSubmit={this.props.handleSubmit}
           onSubmit={this.onSubmit}
-          onDelete={this.onDelete}
+          handleDelete={this.handleDelete}
         />
       </Card>
     )
