@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {
   getPostRequest,
+  deletePostRequest,
   getCommentsRequest,
   votePostRequest,
   voteCommentRequest
@@ -24,7 +25,7 @@ class PostDetail extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!nextProps.post.id) {
+    if (!nextProps.post && nextProps.post.id !== '') {
       this.setState({ isDeleted: true })
     }
   }
@@ -35,6 +36,13 @@ class PostDetail extends Component {
 
   handleCommentVote = (id, voteOption) => {
     this.props.voteCommentRequest(id, voteOption)
+  }
+
+  handleDelete = id => {
+    this.props
+      .deletePostRequest(id)
+      .then(this.props.notify('Post deleted!'))
+      .then(this.props.history.push('/'))
   }
 
   compareRecency = (a, b) => b.timestamp - a.timestamp
@@ -52,7 +60,12 @@ class PostDetail extends Component {
     ) : (
       <Box>
         <Box p={3} bg={WHITE}>
-          <PostContent post={post} handleVote={this.handlePostVote} isDetail />
+          <PostContent
+            post={post}
+            handleVote={this.handlePostVote}
+            handleDelete={this.handleDelete}
+            isDetail
+          />
         </Box>
         <Box mt={2}>
           <AddComment parentId={post.id} notify={notify} />
@@ -78,6 +91,7 @@ const mapStateToProps = ({ post, comments }) => {
 
 export default connect(mapStateToProps, {
   getPostRequest,
+  deletePostRequest,
   getCommentsRequest,
   votePostRequest,
   voteCommentRequest

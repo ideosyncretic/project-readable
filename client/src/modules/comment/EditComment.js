@@ -17,9 +17,10 @@ class EditComment extends Component {
 
   onSubmit = params => {
     const { parentId } = params
-    const { post } = this.props
+    const { post, notify } = this.props
     this.props
       .editCommentRequest(params)
+      .then(notify('Comment edited!'))
       .then(this.props.history.push(`/${post.category}/${parentId}`))
   }
 
