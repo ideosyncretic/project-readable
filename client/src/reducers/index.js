@@ -36,6 +36,9 @@ const postsReducer = (state = {}, action) => {
           voteScore: votedPost.voteScore
         }
       }
+    case DELETE_POST:
+      const { deletedPost } = action
+      return _.omit(state, deletedPost.id)
     default:
       return state
   }
