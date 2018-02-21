@@ -26,9 +26,11 @@ class EditComment extends Component {
 
   handleDelete = () => {
     const { id, parentId } = this.props.comment
+    const { post, notify } = this.props
     this.props
       .deleteCommentRequest(id)
-      .then(this.props.history.push(`/post/${parentId}`))
+      .then(notify('Comment deleted!'))
+      .then(this.props.history.push(`/${post.category}/${parentId}`))
   }
 
   render() {
