@@ -1,25 +1,11 @@
 import { combineReducers } from 'redux'
-import {
-  GET_POSTS,
-  GET_POST,
-  GET_CATEGORIES,
-  ADD_POST,
-  EDIT_POST,
-  VOTE_POST,
-  DELETE_POST,
-  GET_COMMENTS,
-  ADD_COMMENT,
-  GET_COMMENT,
-  EDIT_COMMENT,
-  DELETE_COMMENT,
-  VOTE_COMMENT
-} from '../actions/types'
+import * as types from '../actions/types'
 import { reducer as formReducer } from 'redux-form'
 import _ from 'lodash'
 
 const postsReducer = (state = {}, action) => {
   switch (action.type) {
-    case GET_POSTS:
+    case types.GET_POSTS:
       const { posts } = action
       // convert array to object with id as key
       let postsObj = {}
@@ -27,7 +13,7 @@ const postsReducer = (state = {}, action) => {
         return (postsObj[post.id] = post)
       })
       return postsObj
-    case VOTE_POST:
+    case types.VOTE_POST:
       const { votedPost } = action
       return {
         ...state,
@@ -36,7 +22,7 @@ const postsReducer = (state = {}, action) => {
           voteScore: votedPost.voteScore
         }
       }
-    case DELETE_POST:
+    case types.DELETE_POST:
       const { deletedPost } = action
       return _.omit(state, deletedPost.id)
     default:
@@ -58,27 +44,27 @@ const initialState = {
 
 const postReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_POST:
+    case types.GET_POST:
       const { post } = action
       return post
-    case ADD_POST:
+    case types.ADD_POST:
       const { newPost } = action
       return newPost
-    case EDIT_POST:
+    case types.EDIT_POST:
       const { editedPost } = action
       return editedPost
-    case VOTE_POST:
+    case types.VOTE_POST:
       const { votedPost } = action
       return votedPost
-    case DELETE_POST:
+    case types.DELETE_POST:
       const { deletedPost } = action
       return deletedPost
-    case ADD_COMMENT:
+    case types.ADD_COMMENT:
       return {
         ...state,
         commentCount: state.commentCount + 1
       }
-    case DELETE_COMMENT:
+    case types.DELETE_COMMENT:
       return {
         ...state,
         commentCount: state.commentCount - 1
@@ -90,7 +76,7 @@ const postReducer = (state = initialState, action) => {
 
 const categoriesReducer = (state = {}, action) => {
   switch (action.type) {
-    case GET_CATEGORIES:
+    case types.GET_CATEGORIES:
       const { categories } = action
       let categoriesObj = {}
       categories.map(category => {
@@ -104,29 +90,29 @@ const categoriesReducer = (state = {}, action) => {
 
 const commentsReducer = (state = {}, action) => {
   switch (action.type) {
-    case GET_COMMENTS:
+    case types.GET_COMMENTS:
       const { comments } = action
       let commentsObj = {}
       comments.map(comment => {
         return (commentsObj[comment.id] = comment)
       })
       return commentsObj
-    case ADD_COMMENT:
+    case types.ADD_COMMENT:
       const { newComment } = action
       return {
         ...state,
         [newComment.id]: newComment
       }
-    case EDIT_COMMENT:
+    case types.EDIT_COMMENT:
       const { editedComment } = action
       return {
         ...state,
         [editedComment.id]: editedComment
       }
-    case DELETE_COMMENT:
+    case types.DELETE_COMMENT:
       const { deletedComment } = action
       return _.omit(state, deletedComment.id)
-    case VOTE_COMMENT:
+    case types.VOTE_COMMENT:
       const { votedComment } = action
       return {
         ...state,
@@ -139,7 +125,7 @@ const commentsReducer = (state = {}, action) => {
 
 const commentReducer = (state = {}, action) => {
   switch (action.type) {
-    case GET_COMMENT:
+    case types.GET_COMMENT:
       const { comment } = action
       return comment
     default:

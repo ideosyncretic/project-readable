@@ -1,18 +1,4 @@
-import {
-  GET_POSTS,
-  GET_CATEGORIES,
-  GET_POST,
-  ADD_POST,
-  EDIT_POST,
-  DELETE_POST,
-  GET_COMMENTS,
-  VOTE_POST,
-  ADD_COMMENT,
-  GET_COMMENT,
-  EDIT_COMMENT,
-  DELETE_COMMENT,
-  VOTE_COMMENT
-} from './types'
+import * as types from './types'
 import { generateID } from '../utils/uuidGenerator.js'
 import axios from 'axios'
 
@@ -38,7 +24,7 @@ export const getPostsRequest = () => dispatch => {
 // }
 
 const getPostsSuccess = posts => ({
-  type: GET_POSTS,
+  type: types.GET_POSTS,
   posts
 })
 
@@ -52,7 +38,7 @@ export const getCategoriesRequest = () => dispatch => {
 }
 
 const getCategoriesSuccess = categories => ({
-  type: GET_CATEGORIES,
+  type: types.GET_CATEGORIES,
   categories
 })
 
@@ -63,7 +49,7 @@ export const getPostRequest = id => dispatch => {
 }
 
 const getPostSuccess = post => ({
-  type: GET_POST,
+  type: types.GET_POST,
   post
 })
 
@@ -83,7 +69,7 @@ export const addPostRequest = params => dispatch => {
 }
 
 const addPostSuccess = newPost => ({
-  type: ADD_POST,
+  type: types.ADD_POST,
   newPost
 })
 
@@ -99,7 +85,7 @@ export const editPostRequest = params => dispatch => {
 }
 
 const editPostSuccess = editedPost => ({
-  type: EDIT_POST,
+  type: types.EDIT_POST,
   editedPost
 })
 
@@ -112,7 +98,7 @@ export const deletePostRequest = id => dispatch => {
 }
 
 const deletePostSuccess = deletedPost => ({
-  type: DELETE_POST,
+  type: types.DELETE_POST,
   deletedPost
 })
 
@@ -127,7 +113,7 @@ export const votePostRequest = (id, voteOption) => dispatch => {
 }
 
 export const votePostSuccess = votedPost => ({
-  type: VOTE_POST,
+  type: types.VOTE_POST,
   votedPost
 })
 
@@ -140,7 +126,7 @@ export const getCommentsRequest = id => dispatch => {
 }
 
 export const getCommentsSuccess = comments => ({
-  type: GET_COMMENTS,
+  type: types.GET_COMMENTS,
   comments
 })
 
@@ -159,7 +145,7 @@ export const addCommentRequest = (params, parentId) => dispatch => {
 }
 
 export const addCommentSuccess = newComment => ({
-  type: ADD_COMMENT,
+  type: types.ADD_COMMENT,
   newComment
 })
 
@@ -172,7 +158,7 @@ export const getCommentRequest = id => dispatch => {
 }
 
 export const getCommentSuccess = comment => ({
-  type: GET_COMMENT,
+  type: types.GET_COMMENT,
   comment
 })
 
@@ -188,7 +174,7 @@ export const editCommentRequest = params => dispatch => {
 }
 
 export const editCommentSuccess = editedComment => ({
-  type: EDIT_COMMENT,
+  type: types.EDIT_COMMENT,
   editedComment
 })
 
@@ -201,7 +187,7 @@ export const deleteCommentRequest = id => dispatch => {
 }
 
 export const deleteCommentSuccess = deletedComment => ({
-  type: DELETE_COMMENT,
+  type: types.DELETE_COMMENT,
   deletedComment
 })
 
@@ -216,6 +202,6 @@ export const voteCommentRequest = (id, voteOption) => dispatch => {
 }
 
 export const voteCommentSuccess = votedComment => ({
-  type: VOTE_COMMENT,
+  type: types.VOTE_COMMENT,
   votedComment
 })
