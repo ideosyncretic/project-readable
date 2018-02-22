@@ -45,6 +45,7 @@ class EditPost extends Component {
           onSubmit={this.onSubmit}
           handleDelete={this.handleDelete}
           isAdding={false}
+          {...this.props}
         />
       </Card>
     )

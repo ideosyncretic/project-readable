@@ -3,8 +3,19 @@ import { Field } from 'redux-form'
 import InputField from '../../../components/InputField.js'
 import { Box, ButtonOutline } from 'rebass'
 
+const REQUIRED = value => (value ? undefined : 'Please fill this in!')
+
 const EditPostForm = props => {
-  const { categories, onSubmit, isAdding, handleDelete } = props
+  const {
+    categories,
+    onSubmit,
+    validate,
+    invalid,
+    pristine,
+    submitting,
+    isAdding,
+    handleDelete
+  } = props
   return (
     <Box
       is="form"
@@ -18,6 +29,7 @@ const EditPostForm = props => {
         label="Title"
         placeholder="Title here"
         type="text"
+        validate={REQUIRED}
       />
       <Field
         name="body"
@@ -25,6 +37,7 @@ const EditPostForm = props => {
         label="Body"
         placeholder="Write something interesting!"
         type="textarea"
+        validate={REQUIRED}
       />
       <Field
         name="category"
@@ -34,6 +47,7 @@ const EditPostForm = props => {
         type="select"
         options={categories}
         disabled={!isAdding}
+        validate={REQUIRED}
       />
       <Field
         name="author"
@@ -42,8 +56,9 @@ const EditPostForm = props => {
         placeholder="Your name"
         type="text"
         disabled={!isAdding}
+        validate={REQUIRED}
       />
-      <ButtonOutline type="submit">
+      <ButtonOutline type="submit" disabled={pristine || invalid || submitting}>
         {isAdding ? 'Create post' : 'Update post'}
       </ButtonOutline>
       {isAdding ? null : (

@@ -27,6 +27,7 @@ class AddPost extends Component {
           handleSubmit={this.props.handleSubmit}
           onSubmit={this.onSubmit}
           isAdding={true}
+          {...this.props}
         />
       </Card>
     )
