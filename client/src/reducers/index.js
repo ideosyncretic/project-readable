@@ -30,19 +30,33 @@ const postsReducer = (state = {}, action) => {
   }
 }
 
-const initialState = {
-  id: '',
-  title: '',
-  timestamp: '',
-  body: '',
-  author: '',
-  category: '',
-  voteScore: 0,
-  commentCount: 0,
-  deleted: false
-}
+// const initialState = {
+//   id: '',
+//   title: '',
+//   timestamp: '',
+//   body: '',
+//   author: '',
+//   category: '',
+//   voteScore: 0,
+//   commentCount: 0,
+//   deleted: false
+// }
 
-const postReducer = (state = initialState, action) => {
+const postReducer = (
+  state = {
+    id: '',
+    title: '',
+    timestamp: '',
+    body: '',
+    author: '',
+    category: '',
+    voteScore: 0,
+    commentCount: 0,
+    deleted: false,
+    hasLoaded: false
+  },
+  action
+) => {
   switch (action.type) {
     case types.GET_POST:
       const { post } = action
@@ -68,6 +82,16 @@ const postReducer = (state = initialState, action) => {
       return {
         ...state,
         commentCount: state.commentCount - 1
+      }
+    case types.POST_LOADING:
+      return {
+        ...state,
+        hasLoaded: false
+      }
+    case types.POST_LOADED:
+      return {
+        ...state,
+        hasLoaded: true
       }
     default:
       return state

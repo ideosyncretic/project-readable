@@ -15,7 +15,8 @@ import { WHITE } from '../../styles/colors'
 
 class PostDetail extends Component {
   state = {
-    isDeleted: false
+    isDeleted: false,
+    isLoading: true
   }
 
   componentDidMount() {
@@ -25,8 +26,11 @@ class PostDetail extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!nextProps.post && nextProps.post.id !== '') {
-      this.setState({ isDeleted: true })
+    if (nextProps.post.hasLoaded) {
+      this.setState(() => ({ isLoading: false }))
+      if (!nextProps.post.id) {
+        this.setState(() => ({ isLoading: false, isDeleted: true }))
+      }
     }
   }
 

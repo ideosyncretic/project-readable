@@ -45,7 +45,15 @@ const getCategoriesSuccess = categories => ({
 // get post
 
 export const getPostRequest = id => dispatch => {
-  return api.get(`/posts/${id}`).then(res => dispatch(getPostSuccess(res.data)))
+  dispatch({
+    type: types.POST_LOADING
+  })
+  return api.get(`/posts/${id}`).then(res => {
+    dispatch(getPostSuccess(res.data))
+    dispatch({
+      type: types.POST_LOADED
+    })
+  })
 }
 
 const getPostSuccess = post => ({
