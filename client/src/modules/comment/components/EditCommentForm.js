@@ -2,9 +2,17 @@ import React from 'react'
 import { Field } from 'redux-form'
 import InputField from '../../../components/InputField.js'
 import { Box, ButtonOutline } from 'rebass'
+import { REQUIRED } from '../../../utils/validations'
 
 const EditCommentForm = props => {
-  const { onSubmit, handleDelete } = props
+  const {
+    onSubmit,
+    handleDelete,
+    validate,
+    invalid,
+    pristine,
+    submitting
+  } = props
   return (
     <Box
       is="form"
@@ -18,8 +26,11 @@ const EditCommentForm = props => {
         label="Comment"
         placeholder="Write something interesting!"
         type="textarea"
+        validate={REQUIRED}
       />
-      <ButtonOutline type="submit">Update comment</ButtonOutline>
+      <ButtonOutline type="submit" disabled={pristine || invalid || submitting}>
+        Update comment
+      </ButtonOutline>
       <ButtonOutline
         onClick={e => {
           e.preventDefault()

@@ -41,6 +41,7 @@ class EditComment extends Component {
           handleSubmit={this.props.handleSubmit}
           onSubmit={this.onSubmit}
           handleDelete={this.handleDelete}
+          {...this.props}
         />
       </Card>
     )

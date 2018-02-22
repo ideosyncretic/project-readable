@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { Box, Card, Button } from 'rebass'
 import { addCommentRequest } from '../../actions'
 import InputField from '../../components/InputField.js'
+import { REQUIRED } from '../../utils/validations'
 
 class AddComment extends Component {
   onSubmit = params => {
@@ -12,7 +13,7 @@ class AddComment extends Component {
   }
 
   render() {
-    const { handleSubmit } = this.props
+    const { handleSubmit, validate, invalid, pristine, submitting } = this.props
     return (
       <Card m={2} p={3}>
         <Box is="form" onSubmit={handleSubmit(this.onSubmit)}>
@@ -21,14 +22,18 @@ class AddComment extends Component {
             component={InputField}
             type="textarea"
             label="Comment"
+            validate={REQUIRED}
           />
           <Field
             name="author"
             component={InputField}
             type="text"
             label="Author"
+            validate={REQUIRED}
           />
-          <Button type="submit">Comment</Button>
+          <Button type="submit" disabled={pristine || invalid || submitting}>
+            Comment
+          </Button>
         </Box>
       </Card>
     )

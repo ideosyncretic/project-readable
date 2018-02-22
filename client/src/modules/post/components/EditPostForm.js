@@ -2,8 +2,7 @@ import React from 'react'
 import { Field } from 'redux-form'
 import InputField from '../../../components/InputField.js'
 import { Box, ButtonOutline } from 'rebass'
-
-const REQUIRED = value => (value ? undefined : 'Please fill this in!')
+import { REQUIRED } from '../../../utils/validations'
 
 const EditPostForm = props => {
   const {

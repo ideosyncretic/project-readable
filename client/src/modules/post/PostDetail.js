@@ -72,7 +72,7 @@ class PostDetail extends Component {
           />
         </Box>
         <Box mt={2}>
-          <AddComment parentId={post.id} notify={notify} />
+          <AddComment parentId={post.id} notify={notify} {...this.props} />
           {sortedComments.map(comment => (
             <CommentCard
               key={comment.id}
